@@ -64,17 +64,6 @@ function buildIndex(): SearchRecord[] {
       href: `/property/flood-mapping#${slug}`,
       group: "Flood Mapping",
     });
-    for (const link of region.links) {
-      records.push({
-        id: `flood-link-${slug}-${slugify(link.label)}`,
-        title: link.label,
-        breadcrumb: `Property > Flood Mapping > ${region.region}`,
-        description: link.url,
-        href: link.url,
-        group: "Flood Mapping",
-        external: true,
-      });
-    }
   }
 
   for (const tool of propertyReferenceTools) {
