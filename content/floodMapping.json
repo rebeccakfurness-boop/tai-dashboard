@@ -3,7 +3,7 @@
     {
       "region": "Northland",
       "links": [
-        { "label": "NRC Flood Maps", "url": "https://www.nrc.govt.nz/floodmaps/" }
+        { "label": "NRC Hazard Property Viewer", "url": "https://experience.arcgis.com/experience/e426127ba8324f068a43a68c69b3d27a/page/Hazard-Property-Viewer" }
       ],
       "notes": ""
     },
