@@ -1,9 +1,10 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import { ArrowUpRight, Search, TriangleAlert, X, Maximize2 } from "lucide-react";
+import { ArrowUpRight, Search, TriangleAlert } from "lucide-react";
 import { slugify } from "@/lib/search";
 import { cn } from "@/lib/utils";
+import { EmbedPanel } from "./embed-panel";
 import type { FloodRegion } from "@/content/types";
 
 type Selection = { region: string; linkIndex: number };
@@ -72,86 +73,52 @@ export function FloodMappingExplorer({ regions }: { regions: FloodRegion[] }) {
       </div>
 
       {selectedRegion && selectedLink && (
-        <div
-          id="flood-embed-panel"
-          className="mb-8 scroll-mt-24 overflow-hidden rounded-2xl border border-border-strong bg-surface shadow-lg animate-rise"
-        >
-          <div className="flex flex-wrap items-center justify-between gap-3 border-b border-border bg-background px-5 py-3">
-            <div className="min-w-0">
-              <p className="text-xs font-semibold uppercase tracking-wide text-brand-600">
-                {selectedRegion.region}
-              </p>
-              <div className="flex flex-wrap items-center gap-2">
-                <h3 className="truncate font-bold text-foreground">
-                  {selectedLink.label}
-                </h3>
-                {selectedRegion.links.length > 1 && (
-                  <div className="flex gap-1">
-                    {selectedRegion.links.map((l, i) => (
-                      <button
-                        key={l.url}
-                        onClick={() =>
-                          setSelected({ region: selectedRegion.region, linkIndex: i })
-                        }
-                        className={cn(
-                          "focus-ring rounded-full px-2.5 py-0.5 text-[11px] font-semibold transition-colors",
-                          i === selected!.linkIndex
-                            ? "bg-brand-500 text-white"
-                            : "bg-border/60 text-muted hover:text-brand-600",
-                        )}
-                      >
-                        Tool {i + 1}
-                      </button>
-                    ))}
-                  </div>
-                )}
-              </div>
-            </div>
-            <div className="flex shrink-0 items-center gap-2">
-              <a
-                href={selectedLink.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="focus-ring inline-flex items-center gap-1.5 rounded-lg border border-border-strong px-3 py-1.5 text-xs font-semibold text-foreground transition-colors hover:border-brand-400 hover:text-brand-600"
-              >
-                <Maximize2 className="size-3.5" />
-                Open in new tab
-              </a>
-              <button
-                onClick={() => setSelected(null)}
-                className="focus-ring rounded-lg p-1.5 text-muted hover:bg-border/50"
-                aria-label="Close embedded map"
-              >
-                <X className="size-4" />
-              </button>
-            </div>
-          </div>
-
-          <div className="relative h-[70vh] max-h-[780px] min-h-[420px] w-full bg-background">
-            <iframe
-              key={selectedLink.url}
-              src={selectedLink.url}
-              title={`${selectedRegion.region} — ${selectedLink.label}`}
-              className="absolute inset-0 h-full w-full border-0"
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-            />
-          </div>
-
-          <p className="border-t border-border bg-background/60 px-5 py-2.5 text-xs text-muted">
-            Blank or not loading? Some councils block their maps from being
-            embedded elsewhere —{" "}
-            <a
-              href={selectedLink.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="font-semibold text-brand-600 hover:text-brand-700"
-            >
-              open it in a new tab
-            </a>{" "}
-            instead. Once loaded, use the tool&apos;s own search box to look up
-            an address.
-          </p>
+        <div className="mb-8">
+          <EmbedPanel
+            id="flood-embed-panel"
+            eyebrow={selectedRegion.region}
+            title={selectedLink.label}
+            url={selectedLink.url}
+            onClose={() => setSelected(null)}
+            headerExtra={
+              selectedRegion.links.length > 1 ? (
+                <div className="flex gap-1">
+                  {selectedRegion.links.map((l, i) => (
+                    <button
+                      key={l.url}
+                      onClick={() =>
+                        setSelected({ region: selectedRegion.region, linkIndex: i })
+                      }
+                      className={cn(
+                        "focus-ring rounded-full px-2.5 py-0.5 text-[11px] font-semibold transition-colors",
+                        i === selected!.linkIndex
+                          ? "bg-brand-500 text-white"
+                          : "bg-border/60 text-muted hover:text-brand-600",
+                      )}
+                    >
+                      Tool {i + 1}
+                    </button>
+                  ))}
+                </div>
+              ) : undefined
+            }
+            note={
+              <>
+                Blank or not loading? Some councils block their maps from being
+                embedded elsewhere —{" "}
+                <a
+                  href={selectedLink.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-semibold text-brand-600 hover:text-brand-700"
+                >
+                  open it in a new tab
+                </a>{" "}
+                instead. Once loaded, use the tool&apos;s own search box to look
+                up an address.
+              </>
+            }
+          />
         </div>
       )}
 

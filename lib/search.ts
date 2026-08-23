@@ -78,6 +78,16 @@ function buildIndex(): SearchRecord[] {
     });
   }
 
+  records.push({
+    id: "ref-tool-address-lookup",
+    title: "Address Lookup",
+    breadcrumb: "Property > Reference Tools > Address Lookup",
+    description:
+      "Type an address to pull it up on Google Maps, Google Earth, the NZ Post Postcode Finder and homes.co.nz",
+    href: "/property/reference-tools#address-lookup",
+    group: "Reference Tools",
+  });
+
   for (const item of guidanceItems) {
     records.push({
       id: `guidance-${item.id}`,
