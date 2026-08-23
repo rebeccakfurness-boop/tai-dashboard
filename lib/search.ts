@@ -122,6 +122,15 @@ function buildIndex(): SearchRecord[] {
     });
   }
 
+  records.push({
+    id: "travel-companies-office",
+    title: "Companies Office Business Lookup",
+    breadcrumb: "Travel > Verify a business",
+    description: "Search the NZ Companies Register by business name",
+    href: "/travel#companies-office-search",
+    group: "Travel",
+  });
+
   records.push(
     {
       id: "resources-naming",

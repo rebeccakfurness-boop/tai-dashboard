@@ -2,6 +2,7 @@ import { ArrowUpRight } from "lucide-react";
 import { PageHeader, PageContainer } from "@/components/page-header";
 import { StepCard } from "@/components/step-card";
 import { DraftBadge } from "@/components/draft-badge";
+import { CompaniesOfficeSearch } from "@/components/companies-office-search";
 import { travelLinks, travelProcessSteps, travelProcessStatus } from "@/content/travelProcess";
 import { travelNav } from "@/lib/nav";
 
@@ -39,6 +40,13 @@ export default function TravelPage() {
               </a>
             ))}
           </div>
+        </section>
+
+        <section className="mt-10">
+          <h2 className="mb-4 text-sm font-semibold uppercase tracking-wide text-muted">
+            Verify a business
+          </h2>
+          <CompaniesOfficeSearch />
         </section>
 
         <section className="mt-10">
