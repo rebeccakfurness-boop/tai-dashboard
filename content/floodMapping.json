@@ -1,0 +1,159 @@
+{
+  "floodMappingRegions": [
+    {
+      "region": "Northland",
+      "links": [
+        { "label": "NRC Flood Maps", "url": "https://www.nrc.govt.nz/floodmaps/" }
+      ],
+      "notes": ""
+    },
+    {
+      "region": "Auckland",
+      "links": [
+        { "label": "Auckland Flood Viewer", "url": "https://experience.arcgis.com/experience/cbde7f2134404f4d90adce5396a0a630" }
+      ],
+      "notes": ""
+    },
+    {
+      "region": "Waikato",
+      "links": [
+        { "label": "Waikato Flood Viewer", "url": "https://experience.arcgis.com/experience/0eced30c44eb43a2b6fcb1ce8727c9db/" },
+        { "label": "Waikato Region Environmental Maps & Data", "url": "https://waikatoregion.govt.nz/environment/envirohub/environmental-maps-and-data?dt=Flood+warning+level&af=floodWarningLevel" }
+      ],
+      "notes": ""
+    },
+    {
+      "region": "Hamilton",
+      "links": [
+        { "label": "Hamilton Flood Viewer", "url": "https://maps.hamilton.govt.nz/floodviewer/" }
+      ],
+      "notes": ""
+    },
+    {
+      "region": "Rotorua",
+      "links": [
+        { "label": "Rotorua Lakes Council Maps", "url": "https://www.rotorualakescouncil.nz/community/maps#toc-link-0" }
+      ],
+      "notes": "Ensure the correct flood model settings are selected before reading results."
+    },
+    {
+      "region": "Western BOP",
+      "links": [
+        { "label": "Western Bay Natural Hazards Viewer", "url": "https://map.westernbay.govt.nz/Html5Viewer/?viewer=Natural_Hazards" }
+      ],
+      "notes": ""
+    },
+    {
+      "region": "Tauranga",
+      "links": [
+        { "label": "Tauranga GIS Viewer", "url": "https://gis.tauranga.govt.nz/vertigisstudio/web/?app=8d1e800bf4314d8b89bd41a84e5daeb5" }
+      ],
+      "notes": ""
+    },
+    {
+      "region": "Gisborne",
+      "links": [
+        { "label": "Gisborne Significant Flood Plains", "url": "https://geoportal-gizzy.opendata.arcgis.com/maps/gizzy::gisborne-significant-flood-plains/about" }
+      ],
+      "notes": ""
+    },
+    {
+      "region": "Hawke's Bay",
+      "links": [
+        { "label": "HBRC Hazards Viewer", "url": "https://gis.hbrc.govt.nz/Hazards/" },
+        { "label": "Hawke's Bay Flood Observation Extents", "url": "https://hbrcopendata-hbrc.opendata.arcgis.com/datasets/hawkes-bay-flood-observation-extents/explore?location=-39.488900%2C177.047300%2C9" }
+      ],
+      "notes": ""
+    },
+    {
+      "region": "New Plymouth",
+      "links": [
+        { "label": "New Plymouth Flood Viewer", "url": "https://experience.arcgis.com/experience/71cac2d0d83b48e5a79938709f37935d" }
+      ],
+      "notes": ""
+    },
+    {
+      "region": "Whanganui",
+      "links": [
+        { "label": "Whanganui Flood Plain Mapping", "url": "https://experience.arcgis.com/experience/3f7b4ec2f6f14503af1146ce412de39e/page/Flood-Plain-Mapping" }
+      ],
+      "notes": ""
+    },
+    {
+      "region": "Manawatu",
+      "links": [
+        { "label": "Manawatu Flood Viewer", "url": "https://experience.arcgis.com/experience/fa57e94bcc8249c8968785b427a99e7c/" }
+      ],
+      "notes": ""
+    },
+    {
+      "region": "Palmerston North",
+      "links": [],
+      "notes": "Unavailable — no online flood mapping tool currently published."
+    },
+    {
+      "region": "Hutt City",
+      "links": [
+        { "label": "Hutt City Stormwater Models & Mapping", "url": "https://experience.arcgis.com/experience/789b67f52c1d409682d6f853e336bd31/page/Stormwater-Models-and-Mapping" }
+      ],
+      "notes": ""
+    },
+    {
+      "region": "Wellington",
+      "links": [
+        { "label": "Wellington Flood Zones (Open Data)", "url": "https://data-wcc.opendata.arcgis.com/datasets/WCC::flood-zones-3/explore" },
+        { "label": "Wellington Local Maps Viewer", "url": "https://gis.wcc.govt.nz/LocalMapsViewer/?map=5c3d903dc4c043e0953410033c5c0b3e" }
+      ],
+      "notes": ""
+    },
+    {
+      "region": "Tasman",
+      "links": [
+        { "label": "Tasman Flood Viewer", "url": "https://experience.arcgis.com/experience/9547b4b796254b9788556b902a03cdb3" },
+        { "label": "Nelson & Tasman Flood LiDAR Index Tiles 2022", "url": "https://data.linz.govt.nz/layer/112783-nelson-and-tasman-top-of-the-south-flood-lidar-index-tiles-2022/" }
+      ],
+      "notes": ""
+    },
+    {
+      "region": "Canterbury",
+      "links": [
+        { "label": "Canterbury Flood Model Results", "url": "https://apps.canterburymaps.govt.nz/FloodModelResults/" }
+      ],
+      "notes": ""
+    },
+    {
+      "region": "Christchurch",
+      "links": [
+        { "label": "Christchurch GIS Web App Viewer", "url": "https://gis.ccc.govt.nz/portal/apps/webappviewer/index.html?id=65b4e2bfc84c4f2e85606cc46bcb6d01" }
+      ],
+      "notes": ""
+    },
+    {
+      "region": "Wanaka",
+      "links": [
+        { "label": "Wanaka Flood Viewer", "url": "https://experience.arcgis.com/experience/0b39760dc8fe4ddebac30e4ef397d716" }
+      ],
+      "notes": ""
+    },
+    {
+      "region": "Otago",
+      "links": [
+        { "label": "Otago Flooding Viewer", "url": "https://experience.arcgis.com/experience/30bb9b65ada445b5af4ab4a0bc2d6d93/page/Flooding" },
+        { "label": "ORC Map Series", "url": "https://maps.orc.govt.nz/portal/apps/MapSeries/index.html?appid=55020b1c52184433880ea3b0fad0065f" }
+      ],
+      "notes": ""
+    },
+    {
+      "region": "Dunedin",
+      "links": [],
+      "notes": "Unavailable — no online flood mapping tool currently published."
+    },
+    {
+      "region": "Invercargill",
+      "links": [
+        { "label": "Invercargill Map Viewer", "url": "https://www.arcgis.com/apps/mapviewer/index.html?webmap=94ff824ba04047d4bc84dd272315b5bf" }
+      ],
+      "notes": ""
+    }
+  ]
+}
