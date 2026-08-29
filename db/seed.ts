@@ -7,6 +7,13 @@
  * Run manually once DATABASE_URL is set:
  *   npx tsx db/seed.ts
  */
+import { config as loadEnv } from "dotenv";
+
+// tsx runs this directly, not through Next.js, so .env.local isn't
+// auto-loaded the way it is for `next dev`/`next build`.
+loadEnv({ path: ".env.local" });
+loadEnv({ path: ".env" });
+
 import { getDb, schema } from "./index";
 
 async function seed() {

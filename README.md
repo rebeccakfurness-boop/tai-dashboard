@@ -105,6 +105,11 @@ npm run db:migrate   # applies drizzle/0000_*.sql to create the tables
 npm run db:seed      # adds 3 placeholder resource_assets rows
 ```
 
+Both commands auto-load `DATABASE_URL` from `.env.local` (or `.env`) via
+`dotenv` — `drizzle-kit` and `tsx` are standalone CLIs, not Next.js, so
+they don't get Next's automatic env loading. If you don't have a
+`.env.local` locally, `vercel env pull .env.local` grabs it from Vercel.
+
 `npm run db:studio` opens Drizzle Studio to look at the data directly.
 `npm run db:generate` regenerates migration SQL after a schema change in
 `db/schema.ts` — review the generated file before running `db:migrate`.
