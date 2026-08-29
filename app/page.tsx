@@ -4,7 +4,7 @@ import { PageContainer } from "@/components/page-header";
 import { QuickLinkCard } from "@/components/quick-link-card";
 import { StaggerGrid, StaggerItem } from "@/components/stagger-grid";
 import { quickLinks } from "@/content/quickLinks";
-import { propertyGroup, travelNav, resourcesNav } from "@/lib/nav";
+import { propertyGroup, travelNav, resourcesNav, brokerRegistrationGroup } from "@/lib/nav";
 
 const sections = [
   {
@@ -27,6 +27,11 @@ const sections = [
     blurb:
       "Naming conventions, inbox organisation, the broker list, and a guided checklist for new starters.",
     items: [],
+  },
+  {
+    ...brokerRegistrationGroup,
+    blurb:
+      "Paste a broker's request, review who it found, and register new brokers in a couple of clicks.",
   },
 ];
 
@@ -80,7 +85,7 @@ export default function Home() {
           <h2 className="mb-4 text-sm font-semibold uppercase tracking-wide text-muted">
             Explore the dashboard
           </h2>
-          <div className="grid grid-cols-1 gap-5 lg:grid-cols-3">
+          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {sections.map((section) => {
               const Icon = section.icon;
               return (

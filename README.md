@@ -74,9 +74,85 @@ to `"final"` in the content file to remove the badge.
   `⌘K` command palette (`components/command-palette.tsx`).
 - **Theming**: `next-themes` drives light/dark mode via a `.dark` class,
   toggled from the sidebar.
-- **No auth in phase 1** — per the brief, this sits behind Vercel deployment
-  protection or a shared password if restriction is needed, rather than a
-  built-in login.
+- **No auth on the main dashboard** — per the brief, this sits behind Vercel
+  deployment protection or a shared password if restriction is needed,
+  rather than a built-in login. The Broker Registration module is the one
+  exception — see below.
+
+## Broker Registration module
+
+A separate module (`/broker-registration`) for turning a broker's plain-text
+access request into registered broker records, a confirmation email draft,
+and an updated spreadsheet export. It reuses the main dashboard's layout,
+sidebar and styling, but has its own login and its own database tables —
+see Step 0 investigation notes below for why.
+
+### Setup
+
+Three environment variables, none of which exist for the rest of the app:
+
+| Variable | What it's for |
+|---|---|
+| `DATABASE_URL` | Postgres connection string (Vercel Postgres / Neon). Get this from Vercel → your project → Storage → Create Database → Postgres, then copy the connection string it gives you. |
+| `BROKER_REGISTRATION_PASSWORD` | The shared password gating `/broker-registration/*`. Anything you like — share it with the team out of band. |
+| `BROKER_REGISTRATION_SESSION_SECRET` | Random string used to sign the login session cookie. Generate one with `openssl rand -base64 32` — it doesn't need to be memorable, just unique and secret. |
+
+Set these in Vercel (Project → Settings → Environment Variables) and in a
+local `.env.local` for development. Once `DATABASE_URL` is set:
+
+```bash
+npm run db:migrate   # applies drizzle/0000_*.sql to create the tables
+npm run db:seed      # adds 3 placeholder resource_assets rows
+```
+
+`npm run db:studio` opens Drizzle Studio to look at the data directly.
+`npm run db:generate` regenerates migration SQL after a schema change in
+`db/schema.ts` — review the generated file before running `db:migrate`.
+
+Until `DATABASE_URL` is set, every page and API route in this module still
+loads (the DB client is created lazily, never at build time) — they just
+return a plain-language "the database isn't connected yet" message instead
+of crashing.
+
+### How it works
+
+1. **New Registration** (`/broker-registration/new`): paste a broker's
+   request, fill in the broking company / requester fields, click "Read the
+   list." `lib/broker-registration/parser.ts` extracts name/email/phone from
+   each line (plain or `[Name](mailto:...)` markdown), splitting confident
+   rows from a "Needs a quick check" section — nothing is ever silently
+   dropped, only flagged for a manual fix.
+2. Each row is checked against existing `brokers` by email (case-insensitive)
+   as soon as it's parsed, and again on blur if you edit an email — badged
+   "New" or "Already registered (Status: X)".
+3. **Confirm & save** inserts only the "New," complete rows: a `brokers` row
+   each (status `Pending`), one `registration_batches` row, and the
+   `batch_brokers` links — all in one DB transaction (`app/api/broker-registration/save/route.ts`),
+   re-checking for duplicates at insert time in case of a race.
+4. It then shows an editable confirmation email (exact template from the
+   brief) with an **Open email** button (a `mailto:` link, subject/body
+   URL-encoded) and a **Copy to clipboard** fallback for browsers where
+   `mailto:` misbehaves — no server-side sending in this phase.
+5. **Download updated spreadsheet** hits `/api/broker-registration/export`,
+   which streams an `.xlsx` of the full current `brokers` table via
+   `exceljs`, named `Current_IWL_Brokers_-_YYYYMMDD.xlsx`. It's a separate
+   button, not an email attachment — `mailto:` links can't carry attachments.
+6. **History** (`/broker-registration/history`) lists every past batch,
+   expandable to see exactly who was added in it.
+
+### Future work (not built yet — left as TODOs)
+
+- **Real server-side email sending** (e.g. Resend) with the videos/PDF from
+  `resource_assets` auto-attached, behind a "Send now" button instead of
+  today's `mailto:` draft. Needs an email API key env var and attachment
+  handling.
+- A `delivery_status` column (`sent` / `failed` / `pending`) on
+  `registration_batches`, surfaced in History — see the TODO comment in
+  `db/schema.ts`.
+- `resource_assets.file_url` is currently null for all three seeded rows
+  (Quick Start Guide, Quick Quote video, CFYR Fact Sheet) — the files exist
+  but aren't hosted anywhere yet. Once they have a home (Vercel Blob is a
+  natural fit alongside this stack), update those rows directly.
 
 ## Deploying to Vercel
 

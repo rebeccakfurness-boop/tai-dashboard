@@ -7,6 +7,8 @@ import {
   LifeBuoy,
   Plane,
   BookOpen,
+  UserPlus,
+  History,
 } from "lucide-react";
 
 export type NavItem = {
@@ -76,9 +78,30 @@ export const resourcesNav: NavItem = {
   description: "Naming conventions, brokers and onboarding.",
 };
 
+export const brokerRegistrationGroup: NavGroup = {
+  label: "Broker Registration",
+  href: "/broker-registration/new",
+  icon: UserPlus,
+  items: [
+    {
+      label: "New Registration",
+      href: "/broker-registration/new",
+      icon: UserPlus,
+      description: "Register new brokers from a pasted request.",
+    },
+    {
+      label: "History",
+      href: "/broker-registration/history",
+      icon: History,
+      description: "Past registration batches.",
+    },
+  ],
+};
+
 export const allNavItems: NavItem[] = [
   overviewNav,
   ...propertyGroup.items,
   travelNav,
   resourcesNav,
+  ...brokerRegistrationGroup.items,
 ];

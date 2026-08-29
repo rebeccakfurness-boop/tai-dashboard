@@ -6,7 +6,13 @@ import { Search } from "lucide-react";
 import { Logo } from "./logo";
 import { ThemeToggle } from "./theme-toggle";
 import { useCommandPalette } from "./command-palette-context";
-import { overviewNav, propertyGroup, travelNav, resourcesNav } from "@/lib/nav";
+import {
+  overviewNav,
+  propertyGroup,
+  travelNav,
+  resourcesNav,
+  brokerRegistrationGroup,
+} from "@/lib/nav";
 import { cn } from "@/lib/utils";
 
 function NavLink({
@@ -123,6 +129,23 @@ export function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
             icon={resourcesNav.icon}
             active={pathname === resourcesNav.href}
           />
+        </div>
+
+        <div className="pt-3">
+          <p className="px-3 pb-1 text-[11px] font-semibold uppercase tracking-wide text-muted">
+            {brokerRegistrationGroup.label}
+          </p>
+          <div className="space-y-0.5">
+            {brokerRegistrationGroup.items.map((item) => (
+              <NavLink
+                key={item.href}
+                href={item.href}
+                label={item.label}
+                icon={item.icon}
+                active={pathname === item.href}
+              />
+            ))}
+          </div>
         </div>
       </nav>
 
