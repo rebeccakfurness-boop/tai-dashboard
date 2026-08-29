@@ -5,6 +5,7 @@ import { CheckCircle2, Download, Mail, RotateCcw } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { CopyButton } from "@/components/copy-button";
 import { InstructionsPanel } from "./instructions-panel";
+import { AttachmentReminder } from "./attachment-reminder";
 import { RowTable } from "./row-table";
 import type { RowState, MatchStatus } from "./types";
 import { parseBrokerList } from "@/lib/broker-registration/parser";
@@ -232,6 +233,11 @@ export function NewRegistrationForm() {
               className="w-full rounded-lg border border-border-strong bg-background px-3 py-2 font-mono text-[13px] leading-relaxed text-foreground outline-none focus:border-brand-400"
             />
           </div>
+
+          <div className="mt-4">
+            <AttachmentReminder />
+          </div>
+
           <div className="mt-4 flex flex-wrap items-center gap-2">
             <a
               href={mailtoHref}

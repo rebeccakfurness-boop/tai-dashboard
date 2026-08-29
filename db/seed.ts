@@ -20,9 +20,9 @@ async function seed() {
   const db = getDb();
 
   await db.insert(schema.resourceAssets).values([
-    { label: "Quick Start Guide", fileUrl: null, fileType: "pdf" },
+    { label: "Quick Start Guide", fileUrl: null, fileType: "video" },
     { label: "Quick Quote video", fileUrl: null, fileType: "video" },
-    { label: "CFYR Fact Sheet", fileUrl: null, fileType: "pdf" },
+    { label: "CFYR Fact Sheet PDF", fileUrl: null, fileType: "pdf" },
   ]);
 
   console.log("Seeded resource_assets with 3 placeholder rows.");
