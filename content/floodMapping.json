@@ -101,6 +101,7 @@
     {
       "region": "Wellington",
       "links": [
+        { "label": "Greater Wellington Flood Viewer", "url": "https://experience.arcgis.com/experience/5ff21773d0a0425cbadaa9da39270bf2/page/Home" },
         { "label": "Wellington Flood Zones (Open Data)", "url": "https://data-wcc.opendata.arcgis.com/datasets/WCC::flood-zones-3/explore" },
         { "label": "Wellington Local Maps Viewer", "url": "https://gis.wcc.govt.nz/LocalMapsViewer/?map=5c3d903dc4c043e0953410033c5c0b3e" }
       ],
