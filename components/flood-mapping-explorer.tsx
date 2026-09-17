@@ -5,6 +5,9 @@ import { ArrowUpRight, Search, TriangleAlert } from "lucide-react";
 import { slugify } from "@/lib/search";
 import { cn } from "@/lib/utils";
 import { EmbedPanel } from "./embed-panel";
+import { NzRegionMap } from "./nz-region-map";
+import { townAliases } from "@/content/townAliases";
+import type { NzRegionPin } from "@/content/nzRegionMap";
 import type { FloodRegion } from "@/content/types";
 
 type Selection = { region: string; linkIndex: number };
@@ -16,17 +19,78 @@ function findRegionBySlug(regions: FloodRegion[], slug: string) {
 export function FloodMappingExplorer({ regions }: { regions: FloodRegion[] }) {
   const [query, setQuery] = useState("");
   const [selected, setSelected] = useState<Selection | null>(null);
+  // Set when a map pin is clicked — an exact list of `region` values to show,
+  // bypassing the free-text search below (which does substring matching and
+  // wouldn't match a group label like "Bay of Plenty" against its member
+  // regions "Rotorua"/"Tauranga"/"Western BOP").
+  const [pinFilter, setPinFilter] = useState<{ label: string; regions: string[] } | null>(
+    null,
+  );
 
-  const filtered = useMemo(() => {
+  const { filtered, aliasNote } = useMemo(() => {
+    if (pinFilter) {
+      if (pinFilter.regions.length === 0) {
+        return {
+          filtered: [],
+          aliasNote: `${pinFilter.label} doesn't have a published flood mapping tool yet.`,
+        };
+      }
+      return {
+        filtered: regions.filter((r) => pinFilter.regions.includes(r.region)),
+        aliasNote: null,
+      };
+    }
+
     const q = query.trim().toLowerCase();
-    if (!q) return regions;
-    return regions.filter(
+    if (!q) return { filtered: regions, aliasNote: null as string | null };
+
+    const direct = regions.filter(
       (r) =>
         r.region.toLowerCase().includes(q) ||
         r.links.some((l) => l.label.toLowerCase().includes(q)) ||
         r.notes.toLowerCase().includes(q),
     );
-  }, [regions, query]);
+    if (direct.length > 0) return { filtered: direct, aliasNote: null };
+
+    // Not a direct match — check if it's a town/suburb name we know about.
+    const aliasEntry = Object.entries(townAliases).find(
+      ([town]) => town.includes(q) || q.includes(town),
+    );
+    if (!aliasEntry) return { filtered: [], aliasNote: null };
+
+    const [town, targetRegions] = aliasEntry;
+    const townLabel = town.replace(/\b\w/g, (c) => c.toUpperCase());
+    if (targetRegions.length === 0) {
+      return {
+        filtered: [],
+        aliasNote: `${townLabel} doesn't have a published flood mapping tool yet.`,
+      };
+    }
+    return {
+      filtered: regions.filter((r) => targetRegions.includes(r.region)),
+      aliasNote: `Showing ${targetRegions.join(" & ")} for ${townLabel}.`,
+    };
+  }, [regions, query, pinFilter]);
+
+  function handlePinSelect(pin: NzRegionPin) {
+    setQuery("");
+    setPinFilter({ label: pin.label, regions: pin.floodRegions });
+    if (pin.floodRegions.length === 1) {
+      const region = regions.find((r) => r.region === pin.floodRegions[0]);
+      if (region) selectRegion(region);
+    }
+    requestAnimationFrame(() => {
+      document.getElementById("flood-region-grid")?.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    });
+  }
+
+  function handleQueryChange(value: string) {
+    setQuery(value);
+    setPinFilter(null);
+  }
 
   function selectFromHash() {
     const hash = window.location.hash.replace("#", "");
@@ -62,14 +126,44 @@ export function FloodMappingExplorer({ regions }: { regions: FloodRegion[] }) {
 
   return (
     <div>
-      <div className="mb-6 flex items-center gap-2.5 rounded-xl border border-border-strong bg-surface px-4 py-2.5 shadow-sm">
-        <Search className="size-4 shrink-0 text-muted" />
-        <input
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-          placeholder="Filter by region…"
-          className="w-full bg-transparent text-sm text-foreground outline-none placeholder:text-muted"
-        />
+      <div className="mb-6 flex flex-col gap-5 sm:flex-row sm:items-start">
+        <div className="mx-auto w-full max-w-[240px] shrink-0 rounded-2xl border border-border bg-surface p-4 shadow-sm sm:mx-0">
+          <NzRegionMap
+            onSelect={handlePinSelect}
+            activeFloodRegions={pinFilter?.regions ?? (selected ? [selected.region] : [])}
+          />
+          <p className="mt-2 text-center text-[11px] text-muted">Click a region</p>
+        </div>
+
+        <div className="flex-1">
+          <div className="flex items-center gap-2.5 rounded-xl border border-border-strong bg-surface px-4 py-2.5 shadow-sm">
+            <Search className="size-4 shrink-0 text-muted" />
+            <input
+              value={query}
+              onChange={(e) => handleQueryChange(e.target.value)}
+              placeholder="Filter by region, or search a town — e.g. Dannevirke…"
+              className="w-full bg-transparent text-sm text-foreground outline-none placeholder:text-muted"
+            />
+          </div>
+
+          {pinFilter && (
+            <div className="mt-3 flex items-center gap-2">
+              <span className="rounded-full bg-brand-100 px-3 py-1 text-xs font-semibold text-brand-700">
+                {pinFilter.label}
+              </span>
+              <button
+                onClick={() => setPinFilter(null)}
+                className="focus-ring text-xs font-medium text-muted hover:text-brand-600"
+              >
+                Show all regions
+              </button>
+            </div>
+          )}
+
+          {aliasNote && filtered.length > 0 && (
+            <p className="mt-3 text-sm text-muted">{aliasNote}</p>
+          )}
+        </div>
       </div>
 
       {selectedRegion && selectedLink && (
@@ -124,10 +218,12 @@ export function FloodMappingExplorer({ regions }: { regions: FloodRegion[] }) {
 
       {filtered.length === 0 ? (
         <p className="py-10 text-center text-sm text-muted">
-          No regions match &ldquo;{query}&rdquo;.
+          {aliasNote || (
+            <>No regions match &ldquo;{query}&rdquo;.</>
+          )}
         </p>
       ) : (
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div id="flood-region-grid" className="scroll-mt-24 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {filtered.map((region) => {
             const unavailable = region.links.length === 0;
             const isActive = selected?.region === region.region;
