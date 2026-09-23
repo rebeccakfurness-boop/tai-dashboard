@@ -4,7 +4,9 @@ import { NamingConventionTable } from "@/components/naming-convention-table";
 import { DataChecklist } from "@/components/data-checklist";
 import { WorksheetFieldTable } from "@/components/worksheet-field-table";
 import { DraftBadge } from "@/components/draft-badge";
+import { ProcessFlowChart } from "@/components/process-flow-chart";
 import { propertyProcessSteps, propertyProcessStatus } from "@/content/propertyProcess";
+import { propertyProcessFlow } from "@/content/propertyProcessFlow";
 import { propertyGroup } from "@/lib/nav";
 
 const extras: Record<string, React.ReactNode> = {
@@ -24,6 +26,13 @@ export default function ProcessPage() {
         actions={propertyProcessStatus === "draft" ? <DraftBadge /> : undefined}
       />
       <PageContainer>
+        <section className="mb-10">
+          <h2 className="mb-4 text-sm font-semibold uppercase tracking-wide text-muted">
+            Process at a glance
+          </h2>
+          <ProcessFlowChart steps={propertyProcessFlow} />
+        </section>
+
         <div className="mb-8 flex flex-wrap gap-2">
           {propertyProcessSteps.map((step, i) => (
             <a
