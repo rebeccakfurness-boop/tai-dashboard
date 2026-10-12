@@ -9,6 +9,7 @@ import {
   BookOpen,
   UserPlus,
   History,
+  GraduationCap,
 } from "lucide-react";
 
 export type NavItem = {
@@ -80,6 +81,12 @@ export const travelGroup: NavGroup = {
       href: "/travel/resources",
       icon: BookOpen,
       description: "IHQ, SafeTravel, airline contacts and business lookup.",
+    },
+    {
+      label: "Training",
+      href: "/travel/training",
+      icon: GraduationCap,
+      description: "Step-by-step training modules — start with Closings.",
     },
   ],
 };

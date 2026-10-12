@@ -6,6 +6,7 @@ import { propertyReferenceTools } from "@/content/referenceTools";
 import { guidanceItems } from "@/content/guidance";
 import { travelLinks, travelProcessSteps } from "@/content/travelProcess";
 import { categoryTags, actorTags } from "@/content/travelInboxTags";
+import { trainingModules } from "@/content/travelTraining";
 import type { FloodRegion } from "@/content/types";
 
 export type SearchRecord = {
@@ -143,6 +144,20 @@ function buildIndex(): SearchRecord[] {
       group: "Travel",
       external: true,
     });
+  }
+
+  for (const trainingModule of trainingModules) {
+    if (trainingModule.status !== "available" || !trainingModule.href || !trainingModule.lessons) continue;
+    for (const lesson of trainingModule.lessons) {
+      records.push({
+        id: `travel-training-${trainingModule.id}-${lesson.id}`,
+        title: lesson.title,
+        breadcrumb: `Travel > Training > ${trainingModule.label} > ${lesson.title}`,
+        description: lesson.summary,
+        href: `${trainingModule.href}#${lesson.id}`,
+        group: "Travel",
+      });
+    }
   }
 
   records.push({

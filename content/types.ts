@@ -70,3 +70,37 @@ export type TravelLink = {
   url: string;
   description: string;
 };
+
+export type TrainingLessonBlock =
+  | { type: "paragraph"; text: string }
+  | {
+      type: "callout";
+      tone: "info" | "success" | "warning";
+      title?: string;
+      text: string;
+    }
+  | { type: "definitionList"; items: { term: string; definition: string }[] }
+  | {
+      type: "cards";
+      items: { title: string; text: string; tag?: string }[];
+    }
+  | { type: "steps"; items: { label: string; text: string }[] }
+  | { type: "checklist"; items: string[] }
+  | { type: "formula"; title: string; formula: string; note?: string };
+
+export type TrainingLesson = {
+  id: string;
+  title: string;
+  summary: string;
+  body: TrainingLessonBlock[];
+};
+
+export type TrainingModule = {
+  id: string;
+  label: string;
+  tag?: string;
+  description: string;
+  status: "available" | "coming-soon";
+  href?: string;
+  lessons?: TrainingLesson[];
+};
