@@ -71,22 +71,16 @@ export const travelGroup: NavGroup = {
   icon: Plane,
   items: [
     {
-      label: "Process",
-      href: "/travel/process",
-      icon: ClipboardList,
-      description: "Inbox category tags, actor tags and the Travel quotation process.",
+      label: "Process & Training",
+      href: "/travel/training",
+      icon: GraduationCap,
+      description: "Inbox tags, the quotation process, and step-by-step training modules.",
     },
     {
       label: "Resources",
       href: "/travel/resources",
       icon: BookOpen,
       description: "IHQ, SafeTravel, airline contacts and business lookup.",
-    },
-    {
-      label: "Training",
-      href: "/travel/training",
-      icon: GraduationCap,
-      description: "Step-by-step training modules — start with Closings.",
     },
   ],
 };

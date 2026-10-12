@@ -105,9 +105,9 @@ function buildIndex(): SearchRecord[] {
     records.push({
       id: `travel-process-${step.id}`,
       title: step.title,
-      breadcrumb: `Travel > Process > ${step.title}`,
+      breadcrumb: `Travel > Process & Training > Process > ${step.title}`,
       description: step.summary,
-      href: `/travel/process#${step.id}`,
+      href: `/travel/training/process#${step.id}`,
       group: "Travel",
     });
   }
@@ -116,9 +116,9 @@ function buildIndex(): SearchRecord[] {
     records.push({
       id: `travel-category-tag-${slugify(tag.label)}`,
       title: `${tag.label} (inbox tag)`,
-      breadcrumb: `Travel > Process > Inbox Category Tags > ${tag.label}`,
+      breadcrumb: `Travel > Process & Training > Process > Inbox Category Tags > ${tag.label}`,
       description: tag.description,
-      href: "/travel/process#category-tags",
+      href: "/travel/training/process#category-tags",
       group: "Travel",
     });
   }
@@ -127,9 +127,9 @@ function buildIndex(): SearchRecord[] {
     records.push({
       id: `travel-actor-tag-${slugify(tag.label)}`,
       title: `${tag.label} (actor tag)`,
-      breadcrumb: `Travel > Process > Who Actions It > ${tag.label}`,
+      breadcrumb: `Travel > Process & Training > Process > Who Actions It > ${tag.label}`,
       description: tag.description,
-      href: "/travel/process#actor-tags",
+      href: "/travel/training/process#actor-tags",
       group: "Travel",
     });
   }
@@ -152,7 +152,7 @@ function buildIndex(): SearchRecord[] {
       records.push({
         id: `travel-training-${trainingModule.id}-${lesson.id}`,
         title: lesson.title,
-        breadcrumb: `Travel > Training > ${trainingModule.label} > ${lesson.title}`,
+        breadcrumb: `Travel > Process & Training > ${trainingModule.label} > ${lesson.title}`,
         description: lesson.summary,
         href: `${trainingModule.href}#${lesson.id}`,
         group: "Travel",

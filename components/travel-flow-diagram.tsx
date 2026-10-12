@@ -2,13 +2,15 @@
 
 import { cn } from "@/lib/utils";
 
-type NodeType = "start" | "admin" | "uw";
+type NodeType = "start" | "admin" | "uw" | "decision" | "warning" | "highlight";
+type NodeShape = "rect" | "diamond";
 
 type FlowNode = {
   id: string;
   title: string;
   subtitle?: string;
   type: NodeType;
+  shape?: NodeShape;
   x: number;
   y: number;
   w: number;
@@ -23,13 +25,26 @@ type FlowEdge = {
   label?: string;
 };
 
+type LegendEntry = { type: NodeType; label: string };
+
 const TYPE_CLASSES: Record<NodeType, string> = {
   start:
     "bg-zinc-100 border-zinc-300 text-zinc-800 dark:bg-zinc-800/60 dark:border-zinc-600 dark:text-zinc-100",
   admin:
     "bg-violet-100 border-violet-300 text-violet-900 dark:bg-violet-900/40 dark:border-violet-700 dark:text-violet-100",
   uw: "bg-emerald-100 border-emerald-300 text-emerald-900 dark:bg-emerald-900/40 dark:border-emerald-700 dark:text-emerald-100",
+  decision:
+    "bg-brand-100 border-brand-300 text-brand-900 dark:bg-brand-500/20 dark:border-brand-400 dark:text-brand-100",
+  warning:
+    "bg-amber-100 border-amber-300 text-amber-900 dark:bg-amber-900/30 dark:border-amber-700 dark:text-amber-100",
+  highlight: "bg-foreground border-foreground text-background",
 };
+
+const DEFAULT_LEGEND: LegendEntry[] = [
+  { type: "start", label: "Start / trigger" },
+  { type: "admin", label: "Admin" },
+  { type: "uw", label: "Underwriter (UW)" },
+];
 
 const STROKE_CLASS = "stroke-border-strong";
 
@@ -61,9 +76,11 @@ function edgePath(from: { x: number; y: number }, to: { x: number; y: number }) 
 export function TravelFlowDiagram({
   nodes,
   edges,
+  legend = DEFAULT_LEGEND,
 }: {
   nodes: FlowNode[];
   edges: FlowEdge[];
+  legend?: LegendEntry[];
 }) {
   const nodeMap = new Map(nodes.map((n) => [n.id, n]));
   const maxX = Math.max(...nodes.map((n) => n.x + n.w)) + 20;
@@ -120,39 +137,42 @@ export function TravelFlowDiagram({
           );
         })}
 
-        {nodes.map((node) => (
-          <foreignObject key={node.id} x={node.x} y={node.y} width={node.w} height={node.h}>
-            <div
-              className={cn(
-                "flex h-full w-full flex-col items-center justify-center rounded-xl border px-2 text-center leading-tight",
-                TYPE_CLASSES[node.type],
-              )}
-            >
-              <span className="text-[12px] font-bold">{node.title}</span>
-              {node.subtitle && (
-                <span className="mt-0.5 text-[10.5px] font-medium opacity-80">
-                  {node.subtitle}
-                </span>
-              )}
-            </div>
-          </foreignObject>
-        ))}
+        {nodes.map((node) => {
+          const diamond = node.shape === "diamond";
+          return (
+            <foreignObject key={node.id} x={node.x} y={node.y} width={node.w} height={node.h}>
+              <div
+                className={cn(
+                  "flex h-full w-full flex-col items-center justify-center border px-2 text-center leading-tight",
+                  diamond ? "px-6" : "rounded-xl",
+                  TYPE_CLASSES[node.type],
+                )}
+                style={
+                  diamond
+                    ? { clipPath: "polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)" }
+                    : undefined
+                }
+              >
+                <span className="text-[12px] font-bold">{node.title}</span>
+                {node.subtitle && (
+                  <span className="mt-0.5 text-[10.5px] font-medium opacity-80">
+                    {node.subtitle}
+                  </span>
+                )}
+              </div>
+            </foreignObject>
+          );
+        })}
       </svg>
 
       <div className="mt-4 flex flex-wrap items-center gap-4 border-t border-border pt-3 text-xs">
         <span className="font-semibold text-muted">Key:</span>
-        <span className="flex items-center gap-1.5">
-          <span className={cn("size-3 rounded border", TYPE_CLASSES.start)} />
-          Start / trigger
-        </span>
-        <span className="flex items-center gap-1.5">
-          <span className={cn("size-3 rounded border", TYPE_CLASSES.admin)} />
-          Admin
-        </span>
-        <span className="flex items-center gap-1.5">
-          <span className={cn("size-3 rounded border", TYPE_CLASSES.uw)} />
-          Underwriter (UW)
-        </span>
+        {legend.map((entry) => (
+          <span key={entry.type} className="flex items-center gap-1.5">
+            <span className={cn("size-3 rounded border", TYPE_CLASSES[entry.type])} />
+            {entry.label}
+          </span>
+        ))}
       </div>
     </div>
   );

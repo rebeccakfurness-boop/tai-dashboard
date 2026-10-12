@@ -1,3 +1,5 @@
+import type { FlowNode, FlowEdge } from "@/components/travel-flow-diagram";
+
 export type FloodLink = {
   label: string;
   url: string;
@@ -86,7 +88,13 @@ export type TrainingLessonBlock =
     }
   | { type: "steps"; items: { label: string; text: string }[] }
   | { type: "checklist"; items: string[] }
-  | { type: "formula"; title: string; formula: string; note?: string };
+  | { type: "formula"; title: string; formula: string; note?: string }
+  | {
+      type: "flowchart";
+      nodes: FlowNode[];
+      edges: FlowEdge[];
+      legend?: { type: FlowNode["type"]; label: string }[];
+    };
 
 export type TrainingLesson = {
   id: string;
@@ -102,5 +110,6 @@ export type TrainingModule = {
   description: string;
   status: "available" | "coming-soon";
   href?: string;
+  pdfUrl?: string;
   lessons?: TrainingLesson[];
 };

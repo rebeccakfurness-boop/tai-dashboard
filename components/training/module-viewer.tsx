@@ -1,19 +1,26 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ArrowLeft, ArrowRight, Check, Circle, CircleCheck } from "lucide-react";
 import { LessonBlocks } from "./lesson-blocks";
 import { cn } from "@/lib/utils";
 import type { TrainingLesson } from "@/content/types";
 
 export function TrainingModuleViewer({ lessons }: { lessons: TrainingLesson[] }) {
-  const [active, setActive] = useState(() => {
-    if (typeof window === "undefined") return 0;
-    const hash = window.location.hash.replace("#", "");
-    const index = lessons.findIndex((l) => l.id === hash);
-    return index >= 0 ? index : 0;
-  });
+  // Starts at the first lesson on both server and client so the initial
+  // render matches; a deep-linked hash (from search) is applied right
+  // after mount, since the URL fragment is never sent to the server.
+  const [active, setActive] = useState(0);
   const [completed, setCompleted] = useState<Set<number>>(new Set());
+
+  useEffect(() => {
+    const hash = window.location.hash.replace("#", "");
+    if (!hash) return;
+    const index = lessons.findIndex((l) => l.id === hash);
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- one-time sync from the URL hash on mount, not a cascading update
+    if (index >= 0) setActive(index);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const lesson = lessons[active];
   const isLast = active === lessons.length - 1;

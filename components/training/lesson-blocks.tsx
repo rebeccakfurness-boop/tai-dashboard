@@ -1,6 +1,7 @@
 import { Info, CircleCheck, TriangleAlert, Check } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { TagChip } from "@/components/tag-chip";
+import { TravelFlowDiagram } from "@/components/travel-flow-diagram";
 import { cn } from "@/lib/utils";
 import type { TrainingLessonBlock } from "@/content/types";
 
@@ -121,6 +122,11 @@ function LessonBlockView({ block }: { block: TrainingLessonBlock }) {
             ))}
           </ul>
         </Card>
+      );
+
+    case "flowchart":
+      return (
+        <TravelFlowDiagram nodes={block.nodes} edges={block.edges} legend={block.legend} />
       );
 
     case "formula":

@@ -21,7 +21,7 @@ export default function TravelProcessPage() {
     <div>
       <PageHeader
         icon={travelGroup.items[0].icon}
-        eyebrow="Travel"
+        eyebrow="Travel > Process & Training"
         title="Process"
         description="Inbox category tags, who actions what, and the step-by-step Travel quotation process."
       />
@@ -52,7 +52,7 @@ export default function TravelProcessPage() {
             Travel Inbox Category Tags
           </h2>
           <p className="mb-4 text-sm text-muted">
-            The general category of what the email needs — pick one per email.
+            The general category of what the email needs. Pick one per email.
           </p>
           <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {categoryTags.map((tag) => (
