@@ -23,7 +23,7 @@ export default function QuoteTrainingPage() {
               className="focus-ring inline-flex items-center gap-1.5 rounded-lg border border-border-strong bg-background px-3 py-2 text-sm font-medium text-foreground/80 transition-colors hover:border-brand-400 hover:text-brand-600"
             >
               <FileText className="size-4" />
-              View the original PDF slides
+              View the PDF presentation slides
             </a>
           )
         }

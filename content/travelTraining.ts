@@ -13,6 +13,9 @@ import {
   quoteClaimsFlowLegend,
 } from "./quoteProcessFlow";
 
+const CLOSINGS_IMG = "/training/images/closings";
+const QUOTE_IMG = "/training/images/quote";
+
 export const closingsLessons: TrainingLesson[] = [
   {
     id: "job-in-one-line",
@@ -20,21 +23,9 @@ export const closingsLessons: TrainingLesson[] = [
     summary: "Check that what the broker sent matches IHQ. Then file it, or flag it.",
     body: [
       {
-        type: "paragraph",
-        text: "Check that what the broker sent matches IHQ. Then file it, or flag it.",
-      },
-      {
-        type: "cards",
-        items: [
-          {
-            title: "It matches",
-            text: "File the placing document under the client on IHQ.",
-          },
-          {
-            title: "It does not match",
-            text: "Flag it on the policy register under Travel Actions.",
-          },
-        ],
+        type: "image",
+        src: `${CLOSINGS_IMG}/slide-02.jpg`,
+        alt: "Your job in one line: check that what the broker sent matches IHQ, then file it or flag it.",
       },
     ],
   },
@@ -44,20 +35,9 @@ export const closingsLessons: TrainingLesson[] = [
     summary: "The glossary: IHQ, broker, bound, closing document, and more.",
     body: [
       {
-        type: "definitionList",
-        items: [
-          { term: "IHQ", definition: "Our policy system. Clients, policies and documents live here." },
-          { term: "Broker", definition: "The intermediary who sends us the business." },
-          { term: "Quote", definition: "The price we offer a client for cover." },
-          { term: "Bound", definition: "The quote is accepted and the policy is in force." },
-          {
-            term: "Closing document",
-            definition: "Broker paperwork confirming the cover, also called a placing document.",
-          },
-          { term: "Underwriter (UW)", definition: "The person who assesses the risk and binds the policy." },
-          { term: "Policy register", definition: "The list of policies on the client tab in IHQ." },
-          { term: "Travel Actions", definition: "Where we log any issue on the policy register." },
-        ],
+        type: "image",
+        src: `${CLOSINGS_IMG}/slide-03.jpg`,
+        alt: "Glossary table: IHQ, broker, quote, bound, closing document, underwriter, policy register, Travel Actions.",
       },
     ],
   },
@@ -67,18 +47,9 @@ export const closingsLessons: TrainingLesson[] = [
     summary: "Quote and Closing tags matter. Everything else, ignore.",
     body: [
       {
-        type: "cards",
-        items: [
-          { title: "Quote", tag: "Quote", text: "Tagged pink. Look at it." },
-          { title: "Closing", tag: "Closing", text: "Tagged green. Look at it." },
-          { title: "Everything else", text: "Ignore the rest." },
-        ],
-      },
-      {
-        type: "callout",
-        tone: "info",
-        title: "Triage",
-        text: "I can triage them. If you triage and you are not sure, tag it Underwriter and they will pick it up.",
+        type: "image",
+        src: `${CLOSINGS_IMG}/slide-04.jpg`,
+        alt: "What to look at: Quote tagged pink, Closing tagged green, everything else ignored.",
       },
     ],
   },
@@ -88,18 +59,9 @@ export const closingsLessons: TrainingLesson[] = [
     summary: "A broker has sent a placing document or a closing document.",
     body: [
       {
-        type: "cards",
-        items: [
-          {
-            title: "Closing",
-            tag: "Closing",
-            text: "A broker has sent a placing document or a closing document. Any email tagged Closing is one of these.",
-          },
-          {
-            title: "New process",
-            text: "Closing documents are uploaded to the client file on IHQ.",
-          },
-        ],
+        type: "image",
+        src: `${CLOSINGS_IMG}/slide-05.jpg`,
+        alt: "What a Closing email is: a broker has sent a placing document or closing document.",
       },
     ],
   },
@@ -122,19 +84,9 @@ export const closingsLessons: TrainingLesson[] = [
     summary: "Dates, insured name, dollar amounts, and quote acceptance.",
     body: [
       {
-        type: "cards",
-        items: [
-          { title: "1. Dates", text: "Do the dates on the closing match the policy on IHQ?" },
-          { title: "2. Insured name", text: "Does the insured name match the client on IHQ?" },
-          {
-            title: "3. The $$ amounts",
-            text: "Do the amounts match the breakdown on IHQ? The gross premium, including GST, should match.",
-          },
-          {
-            title: "4. Quote accepted",
-            text: "Is it Quote Accepted on the policy register? If not, an Underwriter needs to bind it through IHQ.",
-          },
-        ],
+        type: "image",
+        src: `${CLOSINGS_IMG}/slide-07.jpg`,
+        alt: "What to check: dates, insured name, the dollar amounts, and quote accepted.",
       },
     ],
   },
@@ -144,26 +96,21 @@ export const closingsLessons: TrainingLesson[] = [
     summary: "Quote Referred, Quote Reviewed, or Quote Accepted.",
     body: [
       {
-        type: "paragraph",
-        text: "On the client tab, under Policies, each policy shows one of three statuses.",
+        type: "image",
+        src: `${CLOSINGS_IMG}/slide-08.jpg`,
+        alt: "The policy register: Quote Referred, Quote Reviewed, or Quote Accepted statuses.",
       },
+    ],
+  },
+  {
+    id: "see-the-dollar-breakdown",
+    title: "See the $$ breakdown",
+    summary: "Click the eye under Manage to see the breakdown.",
+    body: [
       {
-        type: "cards",
-        items: [
-          { title: "Quote Referred", text: "We have done our part. An Underwriter needs to action it." },
-          { title: "Quote Reviewed", text: "The quote has been sent to the client and is not accepted yet." },
-          { title: "Quote Accepted", text: "The policy is bound." },
-        ],
-      },
-      {
-        type: "callout",
-        tone: "warning",
-        title: "Something wrong?",
-        text: "A closing that does not match, or a quote that is not accepted, goes on the policy register under Travel Actions.",
-      },
-      {
-        type: "paragraph",
-        text: "Client tab, Policies: the status sits under Transaction Type, and the $$ breakdown is under Manage. Click the eye icon to see it.",
+        type: "image",
+        src: `${CLOSINGS_IMG}/slide-09.jpg`,
+        alt: "Policy List screenshot showing the eye icon under Manage, circled, to open the dollar breakdown.",
       },
     ],
   },
@@ -173,36 +120,21 @@ export const closingsLessons: TrainingLesson[] = [
     summary: "The net-amount formula, and when GST applies.",
     body: [
       {
-        type: "cards",
-        items: [
-          { title: "20%", text: "Broker commission" },
-          { title: "15%", text: "GST, on NZ travel days only" },
-          {
-            title: "Internal or international?",
-            text: "Internal cover has GST. International does not.",
-          },
-        ],
-      },
-      {
-        type: "formula",
-        title: "The net amount on a closing",
-        formula: "(Premium × 0.8) + GST − Broker GST",
-        note: "Broker GST is the GST on the broker commission, which is 20% of the GST.",
+        type: "image",
+        src: `${CLOSINGS_IMG}/slide-10.jpg`,
+        alt: "Checking the dollars: 20 percent broker commission, 15 percent GST, and the net amount formula.",
       },
     ],
   },
   {
     id: "filing-the-placing-document",
     title: "Filing the placing document",
-    summary: "Client file → Documents History tab → drop it in.",
+    summary: "Client file, Documents History tab, drop it in.",
     body: [
       {
-        type: "steps",
-        items: [
-          { label: "Step 1", text: "Open the client file on IHQ." },
-          { label: "Step 2", text: "Go to the Documents History tab." },
-          { label: "Step 3", text: "Drop in the placing document and submit." },
-        ],
+        type: "image",
+        src: `${CLOSINGS_IMG}/slide-11.jpg`,
+        alt: "Screenshot of the IHQ Documents History tab where the placing document is uploaded.",
       },
     ],
   },
@@ -212,18 +144,9 @@ export const closingsLessons: TrainingLesson[] = [
     summary: "Wait for closings, count the days, work out the %, apply it.",
     body: [
       {
-        type: "steps",
-        items: [
-          { label: "Step 1: Wait for closings", text: "Do not pro-rata until the closings are in." },
-          { label: "Step 2: Count the days", text: "End date minus start date, plus 1." },
-          { label: "Step 3: Work out the %", text: "Travel days divided by 365." },
-          { label: "Step 4: Apply it", text: "% × premium. Brokerage is commission × %." },
-        ],
-      },
-      {
-        type: "callout",
-        tone: "info",
-        text: "Period limits: 6 month minimum, 18 month maximum.",
+        type: "image",
+        src: `${CLOSINGS_IMG}/slide-12.jpg`,
+        alt: "Pro-rata steps: wait for closings, count the days, work out the percentage, apply it.",
       },
     ],
   },
@@ -233,6 +156,11 @@ export const closingsLessons: TrainingLesson[] = [
     summary: "Five checks, then file it or flag it.",
     body: [
       {
+        type: "image",
+        src: `${CLOSINGS_IMG}/slide-13.jpg`,
+        alt: "Quick checklist: email tagged Closing, dates match, insured name matches, dollar amounts match, quote accepted.",
+      },
+      {
         type: "checklist",
         items: [
           "Email tagged Closing? Open the document",
@@ -241,18 +169,6 @@ export const closingsLessons: TrainingLesson[] = [
           "$$ amounts match",
           "Quote accepted",
         ],
-      },
-      {
-        type: "cards",
-        items: [
-          { title: "All good", text: "File the placing doc into Documents under the client on IHQ." },
-          { title: "Anything off", text: "Log it on the policy register under Travel Actions." },
-        ],
-      },
-      {
-        type: "callout",
-        tone: "info",
-        text: "Not sure? Tag it Underwriter and they will pick it up.",
       },
     ],
   },
@@ -265,19 +181,9 @@ export const quoteLessons: TrainingLesson[] = [
     summary: "Read it, then choose one of three routes.",
     body: [
       {
-        type: "paragraph",
-        text: "A quote request lands in the inbox. Read it, then choose one of three routes.",
-      },
-      {
-        type: "cards",
-        items: [
-          { title: "Complicated", text: "Tag the email for the Underwriter (UW)." },
-          { title: "Leisure", text: "Tag the email for the UW." },
-          {
-            title: "General corporate travel",
-            text: "This one is yours. Input it on IHQ. The next lessons show you how.",
-          },
-        ],
+        type: "image",
+        src: `${QUOTE_IMG}/slide-02.jpg`,
+        alt: "Sort the request: Complicated and Leisure go to the Underwriter, General corporate travel is yours.",
       },
     ],
   },
@@ -297,7 +203,7 @@ export const quoteLessons: TrainingLesson[] = [
         items: [
           {
             title: "Something missing?",
-            text: "Broker company or contact not in the list? See the 'Broker or contact not in the list' lesson.",
+            text: "Broker company or contact not in the list? See the 'Extra: broker company not in the list' lesson.",
           },
           {
             title: "Notes and claims check",
@@ -308,20 +214,26 @@ export const quoteLessons: TrainingLesson[] = [
     ],
   },
   {
-    id: "log-in-and-create",
-    title: "Log in and create the quote",
-    summary: "IHQ, then the Onboarding Portal, then Create Quote.",
+    id: "log-in-to-ihq",
+    title: "Log in to IHQ",
+    summary: "tai-core.insuredhq.com, then select Onboarding Portal.",
     body: [
       {
-        type: "steps",
-        items: [
-          { label: "Step 3: Log in to IHQ", text: "tai-core.insuredhq.com" },
-          {
-            label: "Step 4: Select Onboarding Portal",
-            text: "It is in the left sidebar, at the top of the menu.",
-          },
-          { label: "Step 5: Create a quote", text: "In the Onboarding Portal, click Create Quote." },
-        ],
+        type: "image",
+        src: `${QUOTE_IMG}/slide-04.jpg`,
+        alt: "Screenshot of IHQ with the Onboarding Portal link circled in the left sidebar.",
+      },
+    ],
+  },
+  {
+    id: "create-a-quote",
+    title: "Create a quote",
+    summary: "In the Onboarding Portal, click Create Quote.",
+    body: [
+      {
+        type: "image",
+        src: `${QUOTE_IMG}/slide-05.jpg`,
+        alt: "Screenshot of the Onboarding Portal with the Create Quote button highlighted.",
       },
     ],
   },
@@ -331,17 +243,9 @@ export const quoteLessons: TrainingLesson[] = [
     summary: "Pick the broker, then the product.",
     body: [
       {
-        type: "steps",
-        items: [
-          { label: "Step 6", text: "Pick the Broker Company from the dropdown." },
-          { label: "Step 7", text: "Product required: Corporate Travel." },
-        ],
-      },
-      {
-        type: "callout",
-        tone: "info",
-        title: "Not in the list?",
-        text: "A missing broker company or contact is covered in the 'Broker or contact not in the list' lesson.",
+        type: "image",
+        src: `${QUOTE_IMG}/slide-06.jpg`,
+        alt: "Screenshot of the Broker Details form with the Broker Company dropdown and product field highlighted.",
       },
     ],
   },
@@ -351,20 +255,9 @@ export const quoteLessons: TrainingLesson[] = [
     summary: "Cover type, policy type, NZBN, address, and travel activities.",
     body: [
       {
-        type: "steps",
-        items: [
-          {
-            label: "Step 8: Cover type",
-            text: "Individual, Business, Group/Team or Other Organisation. Most are Business.",
-          },
-          { label: "Step 9: Policy type", text: "Annual or Single Trip, then enter the dates." },
-          {
-            label: "Step 10: NZBN",
-            text: "Look it up on the Companies Register: companies-register.companiesoffice.govt.nz",
-          },
-          { label: "Step 11: Insured contact address", text: "Enter the address." },
-          { label: "Step 12: Travel activities", text: "Keep it brief, about 5 words." },
-        ],
+        type: "image",
+        src: `${QUOTE_IMG}/slide-07.jpg`,
+        alt: "Screenshot of the Policy Holder Details form: cover type, policy type, NZBN, address, travel activities.",
       },
     ],
   },
@@ -374,23 +267,9 @@ export const quoteLessons: TrainingLesson[] = [
     summary: "Enter the travel days, then answer the risk questions.",
     body: [
       {
-        type: "steps",
-        items: [
-          {
-            label: "Step 13: Enter the travel days",
-            text: "Brokers all have different forms, so use your judgement. If it is not clear which countries to put, use Rest of World.",
-          },
-          {
-            label: "Step 14: Enter the additional information",
-            text: "Answer the questions at the bottom: high risk activities and non-scheduled flights.",
-          },
-        ],
-      },
-      {
-        type: "callout",
-        tone: "warning",
-        title: "Answered Yes?",
-        text: "Note any extra information you received about a high risk or flagged event. See the 'What to put in the notes' lesson.",
+        type: "image",
+        src: `${QUOTE_IMG}/slide-08.jpg`,
+        alt: "Screenshot of the Travel Information table and the high risk activity and non-scheduled flight questions.",
       },
     ],
   },
@@ -400,14 +279,9 @@ export const quoteLessons: TrainingLesson[] = [
     summary: "Write the notes, then click Next and submit.",
     body: [
       {
-        type: "steps",
-        items: [
-          {
-            label: "Step 15",
-            text: "Select Yes, then write all additional information in the box. Start with your name and the date, then your notes.",
-          },
-          { label: "Step 16", text: "Click Next, then submit." },
-        ],
+        type: "image",
+        src: `${QUOTE_IMG}/slide-09.jpg`,
+        alt: "Screenshot of the Claims Details and Declaration step with the notes box and Next button highlighted.",
       },
     ],
   },
@@ -417,22 +291,9 @@ export const quoteLessons: TrainingLesson[] = [
     summary: "Start with your name and the date, then add whichever of these apply.",
     body: [
       {
-        type: "cards",
-        items: [
-          { title: "Travellers over 75", text: "Note it if there are any." },
-          { title: "A claim", text: "Date of loss, cause of loss and amount of loss." },
-          { title: "A renewal", text: "Last year's policy number." },
-          {
-            title: "High risk or flagged events",
-            text: "If any answer is Yes, note any additional information received.",
-          },
-        ],
-      },
-      {
-        type: "callout",
-        tone: "info",
-        title: "Anything else the UW should know",
-        text: "Any information which may impact the underwriting process, or anything the UW may need to know.",
+        type: "image",
+        src: `${QUOTE_IMG}/slide-10.jpg`,
+        alt: "What to put in the notes: travellers over 75, a claim, a renewal, high risk or flagged events, anything else the UW should know.",
       },
     ],
   },
@@ -468,64 +329,45 @@ export const quoteLessons: TrainingLesson[] = [
     summary: "Upload the files, and the Underwriter is told.",
     body: [
       {
-        type: "steps",
-        items: [
-          { label: "Step 17: Upload the files", text: "Upload all the files from the emails to the new client file." },
-          {
-            label: "Step 18: The UW is told",
-            text: "An email is now sent to travel@tai.co.nz, so the UW can pick it up and knows there is a quote to review.",
-          },
-        ],
-      },
-      {
-        type: "callout",
-        tone: "success",
-        text: "That is the quote done. The Underwriter takes it from here.",
+        type: "image",
+        src: `${QUOTE_IMG}/slide-12.jpg`,
+        alt: "Upload and hand over: upload the files, then the Underwriter is emailed. That is the quote done.",
       },
     ],
   },
   {
-    id: "broker-or-contact-not-listed",
-    title: "Extra: broker or contact not in the list",
-    summary: "Add the broker company, or add a new broker contact.",
+    id: "broker-not-listed",
+    title: "Extra: broker company not in the list",
+    summary: "Click Add Broker, then fill in the fields.",
     body: [
       {
-        type: "paragraph",
-        text: "On the Broker Details step, click Add Broker, then fill in the fields.",
+        type: "image",
+        src: `${QUOTE_IMG}/slide-13.jpg`,
+        alt: "Screenshot of the Add Client form for adding a broker company not in the list.",
       },
+    ],
+  },
+  {
+    id: "broker-contact-not-listed",
+    title: "Extra: broker contact not in the list",
+    summary: "Open the Contacts tab, then click + Contact.",
+    body: [
       {
-        type: "steps",
-        items: [
-          { label: "1. Legal Name and Last Name", text: "The company name." },
-          { label: "2. Email", text: "travel@tai.co.nz, always, not the organisation's email." },
-          { label: "3. Client Type", text: "Broker." },
-          { label: "4. Is Net Broker", text: "Yes." },
-        ],
+        type: "image",
+        src: `${QUOTE_IMG}/slide-14.jpg`,
+        alt: "Screenshot of the broker's Contacts tab with the + Contact button circled.",
       },
+    ],
+  },
+  {
+    id: "add-the-contact",
+    title: "Extra: add the contact",
+    summary: "Fill in the new contact's details, then click Add.",
+    body: [
       {
-        type: "callout",
-        tone: "success",
-        text: "The broker company is now added.",
-      },
-      {
-        type: "paragraph",
-        text: "To add a contact instead, open the broker's client file, then the Contacts tab, then click + Contact.",
-      },
-      {
-        type: "steps",
-        items: [
-          { label: "1. First Name", text: "Enter the contact's first name." },
-          { label: "2. Last Name", text: "Enter the contact's last name." },
-          { label: "3. Email", text: "Enter the contact's email." },
-          { label: "4. Contact Relationships", text: "Select the relationship." },
-          { label: "5. Enable Portal Access", text: "Leave the box unticked. Do not enable portal access." },
-          { label: "6. Click Add", text: "Saves the new contact." },
-        ],
-      },
-      {
-        type: "callout",
-        tone: "success",
-        text: "Back on the quote page, click Reset. The contact will now be there.",
+        type: "image",
+        src: `${QUOTE_IMG}/slide-15.jpg`,
+        alt: "Screenshot of the Add Contact form: first name, last name, email, contact relationship, and the Add button.",
       },
     ],
   },

@@ -11,7 +11,7 @@ export function Logo({ className }: { className?: string }) {
         xmlns="http://www.w3.org/2000/svg"
         aria-hidden="true"
       >
-        <rect width="34" height="34" rx="8" fill="#2ea3f2" />
+        <rect width="34" height="34" rx="8" fill="#41bbb5" />
         <path
           d="M9 12.5C9 11.1193 10.1193 10 11.5 10H22.5C23.8807 10 25 11.1193 25 12.5V21.5C25 22.8807 23.8807 24 22.5 24H11.5C10.1193 24 9 22.8807 9 21.5V12.5Z"
           fill="white"

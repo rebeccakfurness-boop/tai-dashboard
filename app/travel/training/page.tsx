@@ -67,7 +67,7 @@ export default function TravelTrainingPage() {
                     className="focus-ring inline-flex w-fit items-center gap-1.5 self-end rounded-lg px-2 py-1 text-xs font-medium text-muted transition-colors hover:text-brand-600"
                   >
                     <FileText className="size-3.5" />
-                    View the original PDF slides
+                    View the PDF presentation slides
                   </a>
                 )}
               </div>

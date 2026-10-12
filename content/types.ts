@@ -94,7 +94,8 @@ export type TrainingLessonBlock =
       nodes: FlowNode[];
       edges: FlowEdge[];
       legend?: { type: FlowNode["type"]; label: string }[];
-    };
+    }
+  | { type: "image"; src: string; alt: string; caption?: string };
 
 export type TrainingLesson = {
   id: string;

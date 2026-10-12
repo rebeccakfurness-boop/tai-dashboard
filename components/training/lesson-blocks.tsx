@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Info, CircleCheck, TriangleAlert, Check } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { TagChip } from "@/components/tag-chip";
@@ -127,6 +128,25 @@ function LessonBlockView({ block }: { block: TrainingLessonBlock }) {
     case "flowchart":
       return (
         <TravelFlowDiagram nodes={block.nodes} edges={block.edges} legend={block.legend} />
+      );
+
+    case "image":
+      return (
+        <figure className="overflow-hidden rounded-2xl border border-border bg-surface shadow-sm">
+          <Image
+            src={block.src}
+            alt={block.alt}
+            width={1600}
+            height={900}
+            className="block h-auto w-full"
+            sizes="(min-width: 1024px) 740px, 100vw"
+          />
+          {block.caption && (
+            <figcaption className="border-t border-border px-4 py-2.5 text-xs text-muted">
+              {block.caption}
+            </figcaption>
+          )}
+        </figure>
       );
 
     case "formula":
