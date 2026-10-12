@@ -4,7 +4,9 @@ import { StepCard } from "@/components/step-card";
 import { DraftBadge } from "@/components/draft-badge";
 import { Card } from "@/components/ui/card";
 import { TagChip } from "@/components/tag-chip";
+import { TravelFlowDiagram } from "@/components/travel-flow-diagram";
 import { travelProcessSteps, travelProcessStatus } from "@/content/travelProcess";
+import { travelFlowNodes, travelFlowEdges } from "@/content/travelFlow";
 import {
   keyNote,
   categoryTags,
@@ -36,6 +38,13 @@ export default function TravelProcessPage() {
               </div>
             </div>
           </Card>
+        </section>
+
+        <section className="mb-10">
+          <h2 className="mb-4 text-sm font-semibold uppercase tracking-wide text-muted">
+            Process Flow
+          </h2>
+          <TravelFlowDiagram nodes={travelFlowNodes} edges={travelFlowEdges} />
         </section>
 
         <section id="category-tags" className="mb-10 scroll-mt-24">
