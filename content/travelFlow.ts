@@ -34,6 +34,9 @@ export const travelFlowNodes: FlowNode[] = [
   { id: "matches", title: "Bound, closing match", subtitle: "File into IHQ", type: "admin", x: 670, y: 810, w: 200, h: 56 },
   { id: "uwActionsNotes", title: "UW actions notes", subtitle: "Confirms bound OK", type: "uw", x: 390, y: 900, w: 200, h: 56 },
   { id: "remittance", title: "Remittance received", subtitle: "Checked, filed into OneDrive", type: "admin", x: 670, y: 900, w: 200, h: 56 },
+
+  // Standalone — not yet wired into the flow above; its own process isn't defined yet.
+  { id: "inboundClaimsEmail", title: "Inbound claims email", subtitle: "Underwriter to action, specific process flow to be determined", type: "uw", x: 940, y: 888, w: 260, h: 86 },
 ];
 
 export const travelFlowEdges: FlowEdge[] = [
