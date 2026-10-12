@@ -5,6 +5,7 @@ import floodMappingData from "@/content/floodMapping.json";
 import { propertyReferenceTools } from "@/content/referenceTools";
 import { guidanceItems } from "@/content/guidance";
 import { travelLinks, travelProcessSteps } from "@/content/travelProcess";
+import { categoryTags, actorTags } from "@/content/travelInboxTags";
 import type { FloodRegion } from "@/content/types";
 
 export type SearchRecord = {
@@ -103,9 +104,31 @@ function buildIndex(): SearchRecord[] {
     records.push({
       id: `travel-process-${step.id}`,
       title: step.title,
-      breadcrumb: `Travel > ${step.title}`,
+      breadcrumb: `Travel > Process > ${step.title}`,
       description: step.summary,
-      href: `/travel#${step.id}`,
+      href: `/travel/process#${step.id}`,
+      group: "Travel",
+    });
+  }
+
+  for (const tag of categoryTags) {
+    records.push({
+      id: `travel-category-tag-${slugify(tag.label)}`,
+      title: `${tag.label} (inbox tag)`,
+      breadcrumb: `Travel > Process > Inbox Category Tags > ${tag.label}`,
+      description: tag.description,
+      href: "/travel/process#category-tags",
+      group: "Travel",
+    });
+  }
+
+  for (const tag of actorTags) {
+    records.push({
+      id: `travel-actor-tag-${slugify(tag.label)}`,
+      title: `${tag.label} (actor tag)`,
+      breadcrumb: `Travel > Process > Who Actions It > ${tag.label}`,
+      description: tag.description,
+      href: "/travel/process#actor-tags",
       group: "Travel",
     });
   }
@@ -114,7 +137,7 @@ function buildIndex(): SearchRecord[] {
     records.push({
       id: `travel-link-${slugify(link.label)}`,
       title: link.label,
-      breadcrumb: `Travel > ${link.label}`,
+      breadcrumb: `Travel > Resources > ${link.label}`,
       description: link.description,
       href: link.url,
       group: "Travel",
@@ -125,9 +148,9 @@ function buildIndex(): SearchRecord[] {
   records.push({
     id: "travel-companies-office",
     title: "Companies Office Business Lookup",
-    breadcrumb: "Travel > Verify a business",
+    breadcrumb: "Travel > Resources > Verify a business",
     description: "Search the NZ Companies Register by business name",
-    href: "/travel#companies-office-search",
+    href: "/travel/resources#companies-office-search",
     group: "Travel",
   });
 

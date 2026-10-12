@@ -4,7 +4,7 @@ import { PageContainer } from "@/components/page-header";
 import { QuickLinkCard } from "@/components/quick-link-card";
 import { StaggerGrid, StaggerItem } from "@/components/stagger-grid";
 import { quickLinks } from "@/content/quickLinks";
-import { propertyGroup, travelNav, resourcesNav, brokerRegistrationGroup } from "@/lib/nav";
+import { propertyGroup, travelGroup, resourcesNav, brokerRegistrationGroup } from "@/lib/nav";
 
 const sections = [
   {
@@ -13,12 +13,9 @@ const sections = [
       "Everything for a Property quotation: the full process, every regional flood mapping tool, reference lookups, and troubleshooting guidance.",
   },
   {
-    label: travelNav.label,
-    href: travelNav.href,
-    icon: travelNav.icon,
+    ...travelGroup,
     blurb:
-      "IHQ, SafeTravel, airline contacts and the Travel quotation process, in one place.",
-    items: [],
+      "Inbox category tags, who actions what, and the reference links the team uses day to day.",
   },
   {
     label: resourcesNav.label,

@@ -1,64 +1,45 @@
-import { ArrowUpRight } from "lucide-react";
+import Link from "next/link";
+import { ChevronRight } from "lucide-react";
 import { PageHeader, PageContainer } from "@/components/page-header";
-import { StepCard } from "@/components/step-card";
-import { DraftBadge } from "@/components/draft-badge";
-import { CompaniesOfficeSearch } from "@/components/companies-office-search";
-import { travelLinks, travelProcessSteps, travelProcessStatus } from "@/content/travelProcess";
-import { travelNav } from "@/lib/nav";
+import { travelGroup } from "@/lib/nav";
 
 export default function TravelPage() {
   return (
     <div>
       <PageHeader
-        icon={travelNav.icon}
+        icon={travelGroup.icon}
         eyebrow="Travel"
         title="Travel Quotation Toolkit"
-        description="IHQ, SafeTravel and airline contacts alongside the Travel quotation process. Full content will expand once the Travel process document is supplied."
-        actions={travelProcessStatus === "draft" ? <DraftBadge /> : undefined}
+        description="How the Travel inbox is organised and actioned, plus the reference links and lookups the team uses day to day."
       />
       <PageContainer>
-        <section>
-          <h2 className="mb-4 text-sm font-semibold uppercase tracking-wide text-muted">
-            Key links
-          </h2>
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
-            {travelLinks.map((link) => (
-              <a
-                key={link.url}
-                href={link.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="focus-ring group flex flex-col rounded-2xl border border-border bg-surface p-5 shadow-sm transition-all hover:-translate-y-0.5 hover:border-brand-300 hover:shadow-md"
+        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
+          {travelGroup.items.map((item) => {
+            const Icon = item.icon;
+            return (
+              <Link
+                key={item.href}
+                href={item.href}
+                className="focus-ring group flex items-start gap-4 rounded-2xl border border-border bg-surface p-6 shadow-sm transition-all hover:-translate-y-0.5 hover:border-brand-300 hover:shadow-md"
               >
-                <div className="flex items-center gap-1.5">
-                  <h3 className="font-bold text-foreground">{link.label}</h3>
-                  <ArrowUpRight className="size-3.5 text-muted transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-brand-600" />
+                <span className="flex size-11 shrink-0 items-center justify-center rounded-xl bg-brand-100 text-brand-600 transition-colors group-hover:bg-brand-500 group-hover:text-white">
+                  <Icon className="size-5" />
+                </span>
+                <div>
+                  <div className="flex items-center gap-1.5">
+                    <h2 className="text-lg font-bold text-foreground">
+                      {item.label}
+                    </h2>
+                    <ChevronRight className="size-4 text-muted transition-transform group-hover:translate-x-0.5 group-hover:text-brand-600" />
+                  </div>
+                  <p className="mt-1.5 text-sm leading-relaxed text-muted">
+                    {item.description}
+                  </p>
                 </div>
-                <p className="mt-1.5 text-sm leading-relaxed text-muted">
-                  {link.description}
-                </p>
-              </a>
-            ))}
-          </div>
-        </section>
-
-        <section className="mt-10">
-          <h2 className="mb-4 text-sm font-semibold uppercase tracking-wide text-muted">
-            Verify a business
-          </h2>
-          <CompaniesOfficeSearch />
-        </section>
-
-        <section className="mt-10">
-          <h2 className="mb-4 text-sm font-semibold uppercase tracking-wide text-muted">
-            Travel Process
-          </h2>
-          <div className="space-y-6">
-            {travelProcessSteps.map((step) => (
-              <StepCard key={step.id} step={step} />
-            ))}
-          </div>
-        </section>
+              </Link>
+            );
+          })}
+        </div>
       </PageContainer>
     </div>
   );

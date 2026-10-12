@@ -9,7 +9,7 @@ import { useCommandPalette } from "./command-palette-context";
 import {
   overviewNav,
   propertyGroup,
-  travelNav,
+  travelGroup,
   resourcesNav,
   brokerRegistrationGroup,
 } from "@/lib/nav";
@@ -115,11 +115,23 @@ export function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
 
         <div className="pt-3">
           <NavLink
-            href={travelNav.href}
-            label={travelNav.label}
-            icon={travelNav.icon}
-            active={pathname === travelNav.href}
+            href={travelGroup.href}
+            label={travelGroup.label}
+            icon={travelGroup.icon}
+            active={pathname === travelGroup.href}
           />
+          <div className="mt-1 space-y-0.5 border-l border-border pl-0.5">
+            {travelGroup.items.map((item) => (
+              <NavLink
+                key={item.href}
+                href={item.href}
+                label={item.label}
+                icon={item.icon}
+                active={pathname === item.href}
+                indent
+              />
+            ))}
+          </div>
         </div>
 
         <div className="pt-3">

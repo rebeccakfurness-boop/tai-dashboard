@@ -64,11 +64,24 @@ export const propertyGroup: NavGroup = {
   ],
 };
 
-export const travelNav: NavItem = {
+export const travelGroup: NavGroup = {
   label: "Travel",
   href: "/travel",
   icon: Plane,
-  description: "IHQ, SafeTravel and the Travel quotation process.",
+  items: [
+    {
+      label: "Process",
+      href: "/travel/process",
+      icon: ClipboardList,
+      description: "Inbox category tags, actor tags and the Travel quotation process.",
+    },
+    {
+      label: "Resources",
+      href: "/travel/resources",
+      icon: BookOpen,
+      description: "IHQ, SafeTravel, airline contacts and business lookup.",
+    },
+  ],
 };
 
 export const resourcesNav: NavItem = {
@@ -101,7 +114,7 @@ export const brokerRegistrationGroup: NavGroup = {
 export const allNavItems: NavItem[] = [
   overviewNav,
   ...propertyGroup.items,
-  travelNav,
+  ...travelGroup.items,
   resourcesNav,
   ...brokerRegistrationGroup.items,
 ];
