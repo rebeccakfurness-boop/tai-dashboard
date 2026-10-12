@@ -25,7 +25,7 @@ export const guidanceItems: GuidanceItem[] = [
     guidance:
       "Don't rely on the map alone when a property sits right on a hazard line. Zoom in, check the address point precisely, and if there's still doubt, refer to a senior underwriter rather than guessing.",
     refersTo: "Property Process — Step 8, Flood Mapping Completion Guide",
-    refersToHref: "/property/process#flood-mapping-guide",
+    refersToHref: "/property/training/process#flood-mapping-guide",
     severity: "caution",
   },
   {
@@ -34,7 +34,7 @@ export const guidanceItems: GuidanceItem[] = [
     guidance:
       "Use the closest available regional council hazard information or LIM data as a fallback, and note in the worksheet that no live mapping tool was available. Consider a specific flood exclusion or referral if hazard information can't be confirmed.",
     refersTo: "Property Process — Step 8, Flood Mapping Completion Guide",
-    refersToHref: "/property/process#flood-mapping-guide",
+    refersToHref: "/property/training/process#flood-mapping-guide",
     severity: "caution",
   },
   {
@@ -68,7 +68,7 @@ export const guidanceItems: GuidanceItem[] = [
     guidance:
       "Treat as a full re-underwrite rather than a straight renewal — re-run the data checklist and flood mapping check as if it were new business.",
     refersTo: "Property Process — Step 3, When Used",
-    refersToHref: "/property/process#when-used",
+    refersToHref: "/property/training/process#when-used",
     severity: "info",
   },
 ];

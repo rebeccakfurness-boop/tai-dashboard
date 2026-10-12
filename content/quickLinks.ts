@@ -26,7 +26,7 @@ export const quickLinks: QuickLink[] = [
   {
     label: "Underwriting Worksheet Guide",
     description: "Field-by-field completion guide",
-    href: "/property/process#worksheet-guide",
+    href: "/property/training/process#worksheet-guide",
     icon: ClipboardCheck,
   },
   {

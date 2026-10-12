@@ -7,6 +7,7 @@ import { guidanceItems } from "@/content/guidance";
 import { travelLinks, travelProcessSteps } from "@/content/travelProcess";
 import { categoryTags, actorTags } from "@/content/travelInboxTags";
 import { trainingModules } from "@/content/travelTraining";
+import { propertyQuoteTypeModules, propertyExtraModules } from "@/content/propertyTraining";
 import type { FloodRegion } from "@/content/types";
 
 export type SearchRecord = {
@@ -44,10 +45,24 @@ function buildIndex(): SearchRecord[] {
     records.push({
       id: `property-process-${step.id}`,
       title: step.title,
-      breadcrumb: `Property > Process > ${step.title}`,
+      breadcrumb: `Property > Process & Training > Process > ${step.title}`,
       description: step.summary,
-      href: `/property/process#${step.id}`,
+      href: `/property/training/process#${step.id}`,
       group: "Property Process",
+    });
+  }
+
+  for (const propertyModule of [...propertyQuoteTypeModules, ...propertyExtraModules]) {
+    records.push({
+      id: `property-training-${propertyModule.id}`,
+      title: propertyModule.label,
+      breadcrumb: `Property > Process & Training > ${propertyModule.label}`,
+      description:
+        propertyModule.status === "coming-soon"
+          ? `${propertyModule.description} (coming soon)`
+          : propertyModule.description,
+      href: "/property/training",
+      group: "Property",
     });
   }
 

@@ -5,7 +5,7 @@ export const onboardingSections: OnboardingSection[] = [
     title: "Get oriented",
     tasks: [
       { label: "Read the Overview tab", href: "/" },
-      { label: "Read the Property Process end to end", href: "/property/process" },
+      { label: "Read the Property Process end to end", href: "/property/training/process" },
       { label: "Read the Travel Process end to end", href: "/travel" },
     ],
   },

@@ -20,9 +20,9 @@ export default function ProcessPage() {
     <div>
       <PageHeader
         icon={propertyGroup.items[0].icon}
-        eyebrow="Property"
+        eyebrow="Property > Process & Training"
         title="Property Product Quotation Process"
-        description="The full step-by-step process, from first receipt to the Quote Register. Searchable inline — use ⌘K to jump straight to any step."
+        description="The full step-by-step process, from first receipt to the Quote Register. Searchable inline: use ⌘K to jump straight to any step."
         actions={propertyProcessStatus === "draft" ? <DraftBadge /> : undefined}
       />
       <PageContainer>

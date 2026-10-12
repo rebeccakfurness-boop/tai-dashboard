@@ -39,10 +39,10 @@ export const propertyGroup: NavGroup = {
   icon: ClipboardList,
   items: [
     {
-      label: "Process",
-      href: "/property/process",
-      icon: ClipboardList,
-      description: "The full Property quotation process, step by step.",
+      label: "Process & Training",
+      href: "/property/training",
+      icon: GraduationCap,
+      description: "The full quotation process, and step-by-step training modules by quote type.",
     },
     {
       label: "Flood Mapping",

@@ -1,5 +1,7 @@
 "use client";
 
+import Link from "next/link";
+import { Clock } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 type NodeType = "start" | "admin" | "uw" | "decision" | "warning" | "highlight";
@@ -11,6 +13,8 @@ type FlowNode = {
   subtitle?: string;
   type: NodeType;
   shape?: NodeShape;
+  href?: string;
+  pending?: boolean;
   x: number;
   y: number;
   w: number;
@@ -25,7 +29,9 @@ type FlowEdge = {
   label?: string;
 };
 
-type LegendEntry = { type: NodeType; label: string };
+type LegendEntry = { type: NodeType; label: string; pending?: boolean };
+
+const PENDING_SWATCH_CLASS = "border-dashed border-border-strong bg-surface/60";
 
 const TYPE_CLASSES: Record<NodeType, string> = {
   start:
@@ -33,8 +39,7 @@ const TYPE_CLASSES: Record<NodeType, string> = {
   admin:
     "bg-violet-100 border-violet-300 text-violet-900 dark:bg-violet-900/40 dark:border-violet-700 dark:text-violet-100",
   uw: "bg-emerald-100 border-emerald-300 text-emerald-900 dark:bg-emerald-900/40 dark:border-emerald-700 dark:text-emerald-100",
-  decision:
-    "bg-brand-100 border-brand-300 text-brand-900 dark:bg-brand-500/20 dark:border-brand-400 dark:text-brand-100",
+  decision: "bg-brand-100 border-brand-300 text-brand-700",
   warning:
     "bg-amber-100 border-amber-300 text-amber-900 dark:bg-amber-900/30 dark:border-amber-700 dark:text-amber-100",
   highlight: "bg-foreground border-foreground text-background",
@@ -139,27 +144,47 @@ export function TravelFlowDiagram({
 
         {nodes.map((node) => {
           const diamond = node.shape === "diamond";
+          const pending = node.pending === true;
+          const clickable = !!node.href;
+          const content = (
+            <div
+              className={cn(
+                "flex h-full w-full flex-col items-center justify-center border px-2 text-center leading-tight transition-all",
+                diamond ? "px-6" : "rounded-xl",
+                pending
+                  ? "border-dashed border-border-strong bg-surface/60 text-muted opacity-80"
+                  : TYPE_CLASSES[node.type],
+                clickable && "cursor-pointer hover:-translate-y-0.5 hover:shadow-md",
+              )}
+              style={
+                diamond
+                  ? { clipPath: "polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)" }
+                  : undefined
+              }
+            >
+              <span className="text-[12px] font-bold">{node.title}</span>
+              {node.subtitle && (
+                <span className="mt-0.5 text-[10.5px] font-medium opacity-80">
+                  {node.subtitle}
+                </span>
+              )}
+              {pending && (
+                <span className="mt-1 inline-flex items-center gap-1 text-[9.5px] font-semibold uppercase tracking-wide opacity-70">
+                  <Clock className="size-2.5" />
+                  Coming soon
+                </span>
+              )}
+            </div>
+          );
           return (
             <foreignObject key={node.id} x={node.x} y={node.y} width={node.w} height={node.h}>
-              <div
-                className={cn(
-                  "flex h-full w-full flex-col items-center justify-center border px-2 text-center leading-tight",
-                  diamond ? "px-6" : "rounded-xl",
-                  TYPE_CLASSES[node.type],
-                )}
-                style={
-                  diamond
-                    ? { clipPath: "polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)" }
-                    : undefined
-                }
-              >
-                <span className="text-[12px] font-bold">{node.title}</span>
-                {node.subtitle && (
-                  <span className="mt-0.5 text-[10.5px] font-medium opacity-80">
-                    {node.subtitle}
-                  </span>
-                )}
-              </div>
+              {node.href ? (
+                <Link href={node.href} className="focus-ring block h-full w-full">
+                  {content}
+                </Link>
+              ) : (
+                content
+              )}
             </foreignObject>
           );
         })}
@@ -168,8 +193,13 @@ export function TravelFlowDiagram({
       <div className="mt-4 flex flex-wrap items-center gap-4 border-t border-border pt-3 text-xs">
         <span className="font-semibold text-muted">Key:</span>
         {legend.map((entry) => (
-          <span key={entry.type} className="flex items-center gap-1.5">
-            <span className={cn("size-3 rounded border", TYPE_CLASSES[entry.type])} />
+          <span key={entry.label} className="flex items-center gap-1.5">
+            <span
+              className={cn(
+                "size-3 rounded border",
+                entry.pending ? PENDING_SWATCH_CLASS : TYPE_CLASSES[entry.type],
+              )}
+            />
             {entry.label}
           </span>
         ))}
