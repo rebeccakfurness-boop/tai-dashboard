@@ -26,9 +26,9 @@ export const travelFlowNodes: FlowNode[] = [
   { id: "emailFiledIHQ", title: "Email filed in client file", subtitle: "On IHQ", type: "admin", x: 800, y: 402, w: 200, h: 56 },
 
   // Shared closing sequence
-  { id: "clientAccepts", title: "Client accepts quote", type: "start", x: 30, y: 710, w: 190, h: 50 },
-  { id: "brokerCloses", title: "Broker sends closing", type: "start", x: 250, y: 710, w: 190, h: 50 },
-  { id: "adminReviews", title: "Admin reviews closing", type: "admin", x: 470, y: 710, w: 190, h: 50 },
+  { id: "clientAccepts", title: "Client accepts quote", subtitle: "or broker sends closing without quote acceptance", type: "start", x: 30, y: 710, w: 210, h: 66 },
+  { id: "brokerCloses", title: "Broker sends closing", type: "start", x: 270, y: 710, w: 190, h: 50 },
+  { id: "adminReviews", title: "Admin reviews closing", type: "admin", x: 490, y: 710, w: 190, h: 50 },
 
   { id: "noMatch", title: "Closing does not match", subtitle: "Load to policy register", type: "admin", x: 390, y: 810, w: 200, h: 56 },
   { id: "matches", title: "Bound, closing match", subtitle: "File into IHQ", type: "admin", x: 670, y: 810, w: 200, h: 56 },
