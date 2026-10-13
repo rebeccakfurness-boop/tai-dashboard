@@ -154,7 +154,7 @@ export function TravelFlowDiagram({
                 pending
                   ? "border-dashed border-border-strong bg-surface/60 text-muted opacity-80"
                   : TYPE_CLASSES[node.type],
-                clickable && "cursor-pointer hover:-translate-y-0.5 hover:shadow-md",
+                clickable && "cursor-pointer hover:-translate-y-0.5",
               )}
               style={
                 diamond

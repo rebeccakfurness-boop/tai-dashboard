@@ -28,7 +28,7 @@ export function ThemeToggle({ className }: { className?: string }) {
     >
       <span
         className={cn(
-          "absolute left-0.5 flex size-6 items-center justify-center rounded-full bg-navy-500 text-white shadow-sm transition-transform duration-300",
+          "absolute left-0.5 flex size-6 items-center justify-center rounded-full bg-navy-500 text-white transition-transform duration-300",
           isDark && "translate-x-6 bg-brand-500",
         )}
       >

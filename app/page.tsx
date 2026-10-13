@@ -41,17 +41,18 @@ const sections = [
 export default function Home() {
   return (
     <div>
-      <div className="border-b border-border bg-gradient-to-b from-brand-100/70 to-surface">
+      <div className="border-b border-border bg-brand-100">
         <PageContainer>
           <div className="max-w-2xl animate-rise">
             <div className="mb-4 inline-flex items-center gap-1.5 rounded-full border border-brand-300 bg-surface px-3 py-1 text-xs font-semibold text-brand-700">
               <Sparkles className="size-3.5" />
               The underwriting team&apos;s one-stop shop
             </div>
-            <h1 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+            <h1 className="text-3xl text-foreground sm:text-4xl">
               Everything you need to quote, in one place.
             </h1>
-            <p className="mt-4 text-[16px] leading-relaxed text-muted">
+            <span className="heading-rule mt-4" aria-hidden="true" />
+            <p className="mt-4 text-[16px] leading-[1.75] text-muted">
               Process guides, flood mapping for every region, reference tools and
               troubleshooting guidance, all in one place. New here? Start with the{" "}
               <Link
@@ -100,7 +101,7 @@ export default function Home() {
               return (
                 <div
                   key={section.href}
-                  className="flex flex-col rounded-2xl border border-border bg-surface p-6 shadow-sm transition-all hover:-translate-y-0.5 hover:border-brand-300 hover:shadow-md"
+                  className="flex flex-col rounded-2xl border border-border bg-surface p-6 transition-all hover:-translate-y-0.5 hover:border-brand-300"
                 >
                   <span
                     className={cn(

@@ -66,7 +66,7 @@ export function AddressLookup() {
     <div id="address-lookup">
       <form
         onSubmit={handleSubmit}
-        className="mb-4 flex items-center gap-2.5 rounded-xl border border-border-strong bg-surface px-4 py-2.5 shadow-sm focus-within:border-brand-400"
+        className="mb-4 flex items-center gap-2.5 rounded-xl border border-border-strong bg-surface px-4 py-2.5 focus-within:border-brand-400"
       >
         <Search className="size-4 shrink-0 text-muted" />
         <input

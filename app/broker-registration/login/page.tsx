@@ -40,7 +40,7 @@ function LoginForm() {
   }
 
   return (
-    <Card className="mx-auto mt-12 max-w-sm p-6 shadow-sm">
+    <Card className="mx-auto mt-12 max-w-sm p-6">
       <div className="mb-4 flex items-center gap-3">
         <span className="flex size-10 items-center justify-center rounded-xl bg-brand-100 text-brand-600">
           <Lock className="size-5" />

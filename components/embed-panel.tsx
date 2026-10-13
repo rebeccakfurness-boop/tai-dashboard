@@ -32,7 +32,7 @@ export function EmbedPanel({
   return (
     <div
       id={id}
-      className="scroll-mt-24 overflow-hidden rounded-2xl border border-border-strong bg-surface shadow-lg animate-rise"
+      className="scroll-mt-24 overflow-hidden rounded-2xl border border-border-strong bg-surface animate-rise"
     >
       <div className="flex flex-wrap items-center justify-between gap-3 border-b border-border bg-background px-5 py-3">
         <div className="min-w-0">

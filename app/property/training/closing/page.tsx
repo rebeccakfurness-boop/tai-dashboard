@@ -22,7 +22,7 @@ export default function PropertyClosingTrainingPage() {
               href={closingModule.pdfUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="focus-ring inline-flex items-center gap-1.5 rounded-lg border border-border-strong bg-background px-3 py-2 text-sm font-medium text-foreground/80 transition-colors hover:border-brand-400 hover:text-brand-600"
+              className="focus-ring inline-flex items-center gap-1.5 border border-border-strong bg-surface-raised px-4 py-2.5 text-xs font-semibold uppercase tracking-[0.08em] text-foreground/80 transition-colors hover:border-brand-400 hover:text-brand-600"
             >
               <FileText className="size-4" />
               View the PDF presentation slides

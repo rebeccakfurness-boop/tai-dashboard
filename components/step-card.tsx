@@ -11,7 +11,7 @@ export function StepCard({
   return (
     <section
       id={step.id}
-      className="scroll-mt-24 rounded-2xl border border-border bg-surface p-6 shadow-sm sm:p-7"
+      className="scroll-mt-24 rounded-2xl border border-border bg-surface p-6 sm:p-7"
     >
       <h2 className="text-lg font-bold text-foreground sm:text-xl">
         {step.title}

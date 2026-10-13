@@ -21,7 +21,7 @@ export default function TravelPage() {
               <Link
                 key={item.href}
                 href={item.href}
-                className="focus-ring group flex items-start gap-4 rounded-2xl border border-border bg-surface p-6 shadow-sm transition-all hover:-translate-y-0.5 hover:border-brand-300 hover:shadow-md"
+                className="focus-ring group flex items-start gap-4 rounded-2xl border border-border bg-surface p-6 transition-all hover:-translate-y-0.5 hover:border-brand-300"
               >
                 <span className="flex size-11 shrink-0 items-center justify-center rounded-xl bg-brand-100 text-brand-600 transition-colors group-hover:bg-brand-500 group-hover:text-white">
                   <Icon className="size-5" />

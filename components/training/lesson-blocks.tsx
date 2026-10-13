@@ -132,7 +132,7 @@ function LessonBlockView({ block }: { block: TrainingLessonBlock }) {
 
     case "image":
       return (
-        <figure className="overflow-hidden rounded-2xl border border-border bg-surface shadow-sm">
+        <figure className="overflow-hidden rounded-2xl border border-border bg-surface">
           <Image
             src={block.src}
             alt={block.alt}

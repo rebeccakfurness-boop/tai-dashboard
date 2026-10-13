@@ -15,7 +15,7 @@ export function BrokerList({ brokers }: { brokers: Broker[] }) {
 
   return (
     <div>
-      <div className="mb-4 flex items-center gap-2.5 rounded-xl border border-border-strong bg-surface px-4 py-2.5 shadow-sm sm:max-w-sm">
+      <div className="mb-4 flex items-center gap-2.5 rounded-xl border border-border-strong bg-surface px-4 py-2.5 sm:max-w-sm">
         <Search className="size-4 shrink-0 text-muted" />
         <input
           value={query}

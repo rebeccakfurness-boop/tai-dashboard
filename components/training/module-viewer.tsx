@@ -73,7 +73,7 @@ export function TrainingModuleViewer({ lessons }: { lessons: TrainingLesson[] })
       </nav>
 
       <div>
-        <section id={lesson.id} className="scroll-mt-24 rounded-2xl border border-border bg-surface p-6 shadow-sm sm:p-7">
+        <section id={lesson.id} className="scroll-mt-24 rounded-2xl border border-border bg-surface p-6 sm:p-7">
           <p className="text-xs font-semibold uppercase tracking-wide text-brand-600">
             Lesson {active + 1} of {lessons.length}
           </p>
@@ -89,7 +89,7 @@ export function TrainingModuleViewer({ lessons }: { lessons: TrainingLesson[] })
           <button
             onClick={() => goTo(Math.max(0, active - 1))}
             disabled={active === 0}
-            className="focus-ring inline-flex items-center gap-1.5 rounded-lg border border-border px-4 py-2 text-sm font-medium text-foreground/80 transition-colors hover:bg-border/50 disabled:pointer-events-none disabled:opacity-40"
+            className="focus-ring inline-flex items-center gap-1.5 bg-surface-raised px-4 py-2.5 text-xs font-semibold tracking-[0.08em] text-foreground/80 uppercase transition-colors hover:bg-border/50 disabled:pointer-events-none disabled:opacity-40"
           >
             <ArrowLeft className="size-4" />
             Back
@@ -98,7 +98,7 @@ export function TrainingModuleViewer({ lessons }: { lessons: TrainingLesson[] })
           {isLast ? (
             <button
               onClick={() => setCompleted((prev) => new Set(prev).add(active))}
-              className="focus-ring inline-flex items-center gap-1.5 rounded-lg bg-brand-500 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-brand-600"
+              className="focus-ring inline-flex items-center gap-1.5 bg-brand-500 px-4 py-2.5 text-xs font-semibold tracking-[0.08em] text-white uppercase transition-colors hover:bg-brand-600"
             >
               <Check className="size-4" />
               Mark complete
@@ -106,7 +106,7 @@ export function TrainingModuleViewer({ lessons }: { lessons: TrainingLesson[] })
           ) : (
             <button
               onClick={next}
-              className="focus-ring inline-flex items-center gap-1.5 rounded-lg bg-brand-500 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-brand-600"
+              className="focus-ring inline-flex items-center gap-1.5 bg-brand-500 px-4 py-2.5 text-xs font-semibold tracking-[0.08em] text-white uppercase transition-colors hover:bg-brand-600"
             >
               Next
               <ArrowRight className="size-4" />

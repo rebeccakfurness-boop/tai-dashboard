@@ -112,7 +112,7 @@ export function NzRegionMap({
 
       <div className="pointer-events-none absolute inset-x-0 top-1 flex justify-center">
         {hovered && (
-          <span className="rounded-full border border-border-strong bg-surface px-2.5 py-1 text-xs font-semibold text-foreground shadow-md">
+          <span className="rounded-full border border-border-strong bg-surface px-2.5 py-1 text-xs font-semibold text-foreground">
             {hovered.label}
             {hovered.floodRegions.length === 0 && (
               <span className="ml-1 font-normal text-muted">— no tool yet</span>

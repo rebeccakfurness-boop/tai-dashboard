@@ -127,7 +127,7 @@ export function FloodMappingExplorer({ regions }: { regions: FloodRegion[] }) {
   return (
     <div>
       <div className="mb-6 flex flex-col gap-5 sm:flex-row sm:items-start">
-        <div className="mx-auto w-full max-w-[240px] shrink-0 rounded-2xl border border-border bg-surface p-4 shadow-sm sm:mx-0">
+        <div className="mx-auto w-full max-w-[240px] shrink-0 rounded-2xl border border-border bg-surface p-4 sm:mx-0">
           <NzRegionMap
             onSelect={handlePinSelect}
             activeFloodRegions={pinFilter?.regions ?? (selected ? [selected.region] : [])}
@@ -136,7 +136,7 @@ export function FloodMappingExplorer({ regions }: { regions: FloodRegion[] }) {
         </div>
 
         <div className="flex-1">
-          <div className="flex items-center gap-2.5 rounded-xl border border-border-strong bg-surface px-4 py-2.5 shadow-sm">
+          <div className="flex items-center gap-2.5 rounded-xl border border-border-strong bg-surface px-4 py-2.5">
             <Search className="size-4 shrink-0 text-muted" />
             <input
               value={query}
@@ -232,7 +232,7 @@ export function FloodMappingExplorer({ regions }: { regions: FloodRegion[] }) {
                 key={region.region}
                 id={slugify(region.region)}
                 className={cn(
-                  "scroll-mt-24 flex flex-col rounded-2xl border bg-surface p-5 shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-md",
+                  "scroll-mt-24 flex flex-col rounded-2xl border bg-surface p-5 transition-all hover:-translate-y-0.5",
                   isActive
                     ? "border-brand-500 ring-1 ring-brand-500"
                     : "border-border hover:border-brand-300",

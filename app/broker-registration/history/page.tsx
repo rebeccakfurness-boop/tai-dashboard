@@ -42,7 +42,7 @@ type Batch = Awaited<ReturnType<typeof loadHistory>>["batches"][number];
 function BatchCard({ batch }: { batch: Batch }) {
   const brokers = batch.batchBrokers.map((bb) => bb.broker);
   return (
-    <details className="group scroll-mt-24 rounded-2xl border border-border bg-surface shadow-sm">
+    <details className="group scroll-mt-24 rounded-2xl border border-border bg-surface">
       <summary className="flex cursor-pointer list-none items-center justify-between gap-3 px-5 py-4">
         <div className="min-w-0">
           <p className="truncate font-bold text-foreground">{batch.brokingCompany}</p>

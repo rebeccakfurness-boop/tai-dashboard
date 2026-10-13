@@ -26,7 +26,7 @@ export default function TravelResourcesPage() {
                 href={link.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="focus-ring group flex flex-col rounded-2xl border border-border bg-surface p-5 shadow-sm transition-all hover:-translate-y-0.5 hover:border-brand-300 hover:shadow-md"
+                className="focus-ring group flex flex-col rounded-2xl border border-border bg-surface p-5 transition-all hover:-translate-y-0.5 hover:border-brand-300"
               >
                 <div className="flex items-center gap-1.5">
                   <h3 className="font-bold text-foreground">{link.label}</h3>

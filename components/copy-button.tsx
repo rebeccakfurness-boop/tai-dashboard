@@ -30,7 +30,7 @@ export function CopyButton({
       type="button"
       onClick={handleCopy}
       className={cn(
-        "focus-ring group inline-flex items-center gap-1.5 rounded-md border border-border-strong bg-surface px-2.5 py-1 text-xs font-medium text-muted transition-all hover:border-brand-400 hover:text-brand-600 active:scale-95",
+        "focus-ring group inline-flex items-center gap-1.5 border border-border-strong bg-surface px-2.5 py-1 text-[11px] font-semibold uppercase tracking-[0.08em] text-muted transition-all hover:border-brand-400 hover:text-brand-600 active:scale-95",
         copied && "border-emerald-400 text-emerald-600",
         className,
       )}

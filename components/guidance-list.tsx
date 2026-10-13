@@ -65,7 +65,7 @@ export function GuidanceList({ items }: { items: GuidanceItem[] }) {
               key={item.id}
               id={item.id}
               className={cn(
-                "scroll-mt-24 rounded-2xl border p-5 shadow-sm",
+                "scroll-mt-24 rounded-2xl border p-5",
                 meta.classes,
               )}
             >

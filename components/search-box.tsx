@@ -56,7 +56,7 @@ export function SearchBox({
   return (
     <div ref={containerRef} className={cn("relative", className)}>
       <Command shouldFilter={false}>
-        <div className="flex items-center gap-3 rounded-xl border border-border-strong bg-surface px-4 py-3 shadow-sm transition-colors focus-within:border-brand-400">
+        <div className="flex items-center gap-3 rounded-xl border border-border-strong bg-surface px-4 py-3 transition-colors focus-within:border-brand-400">
           <Search className="size-4.5 shrink-0 text-muted" />
           <Command.Input
             value={query}

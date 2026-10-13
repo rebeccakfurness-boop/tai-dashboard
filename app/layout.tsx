@@ -1,13 +1,19 @@
 import type { Metadata } from "next";
-import { Source_Sans_3, Baloo_2 } from "next/font/google";
+import { Poppins, Raleway, Baloo_2 } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { AppShell } from "@/components/app-shell";
 
-const sourceSans = Source_Sans_3({
-  variable: "--font-source-sans",
+const poppins = Poppins({
+  variable: "--font-poppins",
   subsets: ["latin"],
-  weight: ["300", "400", "600", "700", "900"],
+  weight: ["300", "400", "500", "600", "700"],
+});
+
+const raleway = Raleway({
+  variable: "--font-raleway",
+  subsets: ["latin"],
+  weight: ["600", "700", "800"],
 });
 
 const baloo = Baloo_2({
@@ -27,7 +33,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${sourceSans.variable} ${baloo.variable} h-full antialiased`}
+      className={`${poppins.variable} ${raleway.variable} ${baloo.variable} h-full antialiased`}
     >
       <body className="min-h-full">
         <ThemeProvider

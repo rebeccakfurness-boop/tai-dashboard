@@ -3,60 +3,60 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 :root {
-  --background: #e9eae9;
+  --background: #ffffff;
   --surface: #ffffff;
-  --surface-raised: #ffffff;
-  --foreground: #1c2a33;
-  --muted: #5d6f79;
-  --border: #dadcda;
-  --border-strong: #c2c6c3;
+  --surface-raised: #f7f7f7;
+  --foreground: #303133;
+  --muted: #777777;
+  --border: #eaeaea;
+  --border-strong: #d4d4d4;
 
-  --navy-950: #001a2e;
-  --navy-900: #00223c;
-  --navy-800: #002e52;
-  --navy-700: #003b68;
-  --navy-600: #00447a;
-  --navy-500: #004988;
+  --navy-950: #000a10;
+  --navy-900: #00141e;
+  --navy-800: #001f2d;
+  --navy-700: #002c3f;
+  --navy-600: #013a52;
+  --navy-500: #014c69;
 
-  --brand-700: #1f7a74;
-  --brand-600: #2f9992;
-  --brand-500: #41bbb5;
-  --brand-400: #6fcac2;
-  --brand-300: #a7e0db;
-  --brand-100: #e3f6f4;
+  --brand-700: #3a7b72;
+  --brand-600: #4a9a8f;
+  --brand-500: #61b9ad;
+  --brand-400: #85c6bd;
+  --brand-300: #a9d9d1;
+  --brand-100: #e6f4f2;
 
   --accent-coral: #ed8559;
   --accent-coral-strong: #e96c36;
 
-  --accent-purple: #713089;
-  --accent-purple-strong: #5a2570;
+  --accent-purple: #5e008d;
+  --accent-purple-strong: #4a0070;
 
-  --ring: #41bbb5;
+  --ring: #61b9ad;
 }
 
 .dark {
-  --background: #0b161c;
-  --surface: #101f27;
-  --surface-raised: #142732;
-  --foreground: #eaf4f9;
-  --muted: #8ba3af;
-  --border: #1c333e;
-  --border-strong: #294856;
+  --background: #0d1b22;
+  --surface: #142730;
+  --surface-raised: #1a2f39;
+  --foreground: #f2f2f2;
+  --muted: #a3a3a3;
+  --border: #22343c;
+  --border-strong: #314750;
 
-  --brand-700: #a7e0db;
-  --brand-600: #7dd0c8;
-  --brand-500: #52c4bb;
-  --brand-400: #41bbb5;
-  --brand-300: #2a8f89;
-  --brand-100: #113330;
+  --brand-700: #a9d9d1;
+  --brand-600: #85c6bd;
+  --brand-500: #61b9ad;
+  --brand-400: #4a9a8f;
+  --brand-300: #3a7b72;
+  --brand-100: #16332e;
 
   --accent-coral: #ed8559;
   --accent-coral-strong: #f2966d;
 
-  --accent-purple: #a568b8;
-  --accent-purple-strong: #c08bd0;
+  --accent-purple: #b36fd1;
+  --accent-purple-strong: #c994de;
 
-  --ring: #52c4bb;
+  --ring: #85c6bd;
 }
 
 @theme inline {
@@ -88,8 +88,26 @@
   --color-accent-purple-strong: var(--accent-purple-strong);
   --color-ring: var(--ring);
 
-  --font-sans: var(--font-source-sans);
+  --font-sans: var(--font-poppins);
+  --font-heading: var(--font-raleway);
   --font-logo: var(--font-baloo);
+
+  /* Clean and flat: corners are square almost everywhere. A hairline
+     2px remains so off-white panels read as barely-rounded, not sharp. */
+  --radius-sm: 1px;
+  --radius-md: 2px;
+  --radius-lg: 2px;
+  --radius-xl: 2px;
+  --radius-2xl: 2px;
+  --radius-3xl: 2px;
+
+  /* No shadows on page content, only on things that float above it
+     (dropdowns, the command palette, the mobile nav drawer), which
+     keep the untouched shadow-2xl default. */
+  --shadow-sm: none;
+  --shadow-md: none;
+  --shadow-lg: none;
+  --shadow-xl: none;
 
   --animate-fade-in: fade-in 0.4s ease-out;
   --animate-rise: rise 0.45s cubic-bezier(0.16, 1, 0.3, 1);
@@ -129,6 +147,20 @@ body {
   background: var(--color-background);
   color: var(--color-foreground);
   font-family: var(--font-sans), system-ui, -apple-system, sans-serif;
+  font-size: 16px;
+  line-height: 1.75;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading), var(--font-sans), system-ui, sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
 }
 
 ::selection {
@@ -158,5 +190,12 @@ body {
 .focus-ring:focus-visible {
   outline: 2px solid var(--ring);
   outline-offset: 2px;
-  border-radius: 6px;
+}
+
+/* A short teal rule under large headings — see PageHeader. */
+.heading-rule {
+  display: block;
+  width: 90px;
+  height: 3px;
+  background: var(--brand-500);
 }

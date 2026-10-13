@@ -32,7 +32,7 @@ function NavLink({
     <Link
       href={href}
       className={cn(
-        "focus-ring group relative flex items-center gap-2.5 rounded-lg px-3 py-2 text-sm font-medium transition-colors",
+        "focus-ring group relative flex items-center gap-2.5 rounded-lg px-3 py-2 text-[15px] tracking-[0.01em] transition-colors",
         indent && "ml-3.5 py-1.5 text-[13px]",
         active
           ? "bg-brand-100 text-brand-700"

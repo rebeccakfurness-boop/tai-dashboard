@@ -33,7 +33,7 @@ export default function ReferenceToolsPage() {
                 href={tool.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="focus-ring group flex flex-col rounded-2xl border border-border bg-surface p-5 shadow-sm transition-all hover:-translate-y-0.5 hover:border-brand-300 hover:shadow-md"
+                className="focus-ring group flex flex-col rounded-2xl border border-border bg-surface p-5 transition-all hover:-translate-y-0.5 hover:border-brand-300"
               >
                 <span className="inline-flex w-fit rounded-full bg-brand-100 px-2.5 py-0.5 text-[11px] font-semibold text-brand-700">
                   {tool.tag}

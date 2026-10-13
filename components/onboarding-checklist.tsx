@@ -53,7 +53,7 @@ export function OnboardingChecklist() {
         {onboardingSections.map((section) => (
           <div
             key={section.title}
-            className="rounded-2xl border border-border bg-surface p-5 shadow-sm"
+            className="rounded-2xl border border-border bg-surface p-5"
           >
             <h3 className="mb-3 font-bold text-foreground">{section.title}</h3>
             <ul className="space-y-2">

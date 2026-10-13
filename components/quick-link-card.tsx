@@ -22,7 +22,7 @@ export function QuickLinkCard({ link }: { link: QuickLink }) {
   );
 
   const className =
-    "group block rounded-2xl border border-border bg-surface p-5 shadow-sm transition-all hover:-translate-y-0.5 hover:border-brand-300 hover:shadow-md focus-ring";
+    "group block rounded-2xl border border-border bg-surface p-5 transition-all hover:-translate-y-0.5 hover:border-brand-300 focus-ring";
 
   if (link.external) {
     return (
