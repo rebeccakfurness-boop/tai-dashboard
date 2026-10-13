@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Source_Sans_3 } from "next/font/google";
+import { Source_Sans_3, Baloo_2 } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { AppShell } from "@/components/app-shell";
@@ -10,8 +10,14 @@ const sourceSans = Source_Sans_3({
   weight: ["300", "400", "600", "700", "900"],
 });
 
+const baloo = Baloo_2({
+  variable: "--font-baloo",
+  subsets: ["latin"],
+  weight: "800",
+});
+
 export const metadata: Metadata = {
-  title: "TAI Underwriting Dashboard",
+  title: "Otta | TAI Underwriting Desk",
   description:
     "The underwriting team's one-stop shop for Property and Travel quotation process, flood mapping, reference tools and guidance.",
 };
@@ -21,7 +27,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${sourceSans.variable} h-full antialiased`}
+      className={`${sourceSans.variable} ${baloo.variable} h-full antialiased`}
     >
       <body className="min-h-full">
         <ThemeProvider

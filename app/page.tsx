@@ -6,17 +6,20 @@ import { StaggerGrid, StaggerItem } from "@/components/stagger-grid";
 import { SearchBox } from "@/components/search-box";
 import { quickLinks } from "@/content/quickLinks";
 import { propertyGroup, travelGroup, resourcesNav, brokerRegistrationGroup } from "@/lib/nav";
+import { cn } from "@/lib/utils";
 
 const sections = [
   {
     ...propertyGroup,
     blurb:
       "Everything for a Property quotation: the full process, every regional flood mapping tool, reference lookups, and troubleshooting guidance.",
+    badgeClass: "bg-navy-500",
   },
   {
     ...travelGroup,
     blurb:
       "Inbox category tags, who actions what, and the reference links the team uses day to day.",
+    badgeClass: "bg-brand-500",
   },
   {
     label: resourcesNav.label,
@@ -25,11 +28,13 @@ const sections = [
     blurb:
       "Naming conventions, inbox organisation, the broker list, and a guided checklist for new starters.",
     items: [],
+    badgeClass: "bg-accent-purple",
   },
   {
     ...brokerRegistrationGroup,
     blurb:
       "Paste a broker's request, review who it found, and register new brokers in a couple of clicks.",
+    badgeClass: "bg-navy-500",
   },
 ];
 
@@ -97,7 +102,12 @@ export default function Home() {
                   key={section.href}
                   className="flex flex-col rounded-2xl border border-border bg-surface p-6 shadow-sm transition-all hover:-translate-y-0.5 hover:border-brand-300 hover:shadow-md"
                 >
-                  <span className="flex size-11 items-center justify-center rounded-xl bg-navy-500 text-white">
+                  <span
+                    className={cn(
+                      "flex size-11 items-center justify-center rounded-xl text-white",
+                      section.badgeClass,
+                    )}
+                  >
                     <Icon className="size-5" />
                   </span>
                   <h3 className="mt-4 text-lg font-bold text-foreground">

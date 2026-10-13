@@ -3,20 +3,20 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 :root {
-  --background: #f5f8fa;
+  --background: #e9eae9;
   --surface: #ffffff;
   --surface-raised: #ffffff;
   --foreground: #1c2a33;
   --muted: #5d6f79;
-  --border: #e1e8ec;
-  --border-strong: #ccd8de;
+  --border: #dadcda;
+  --border-strong: #c2c6c3;
 
-  --navy-950: #0a1628;
-  --navy-900: #0e2039;
-  --navy-800: #13304f;
-  --navy-700: #1a4068;
-  --navy-600: #235186;
-  --navy-500: #2c62a0;
+  --navy-950: #001a2e;
+  --navy-900: #00223c;
+  --navy-800: #002e52;
+  --navy-700: #003b68;
+  --navy-600: #00447a;
+  --navy-500: #004988;
 
   --brand-700: #1f7a74;
   --brand-600: #2f9992;
@@ -27,6 +27,9 @@
 
   --accent-coral: #ed8559;
   --accent-coral-strong: #e96c36;
+
+  --accent-purple: #713089;
+  --accent-purple-strong: #5a2570;
 
   --ring: #41bbb5;
 }
@@ -49,6 +52,9 @@
 
   --accent-coral: #ed8559;
   --accent-coral-strong: #f2966d;
+
+  --accent-purple: #a568b8;
+  --accent-purple-strong: #c08bd0;
 
   --ring: #52c4bb;
 }
@@ -78,9 +84,12 @@
 
   --color-accent-coral: var(--accent-coral);
   --color-accent-coral-strong: var(--accent-coral-strong);
+  --color-accent-purple: var(--accent-purple);
+  --color-accent-purple-strong: var(--accent-purple-strong);
   --color-ring: var(--ring);
 
   --font-sans: var(--font-source-sans);
+  --font-logo: var(--font-baloo);
 
   --animate-fade-in: fade-in 0.4s ease-out;
   --animate-rise: rise 0.45s cubic-bezier(0.16, 1, 0.3, 1);
