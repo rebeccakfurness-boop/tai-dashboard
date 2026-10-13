@@ -15,7 +15,7 @@ export const guidanceItems: GuidanceItem[] = [
     id: "vacant-property",
     trigger: "Property is vacant or unoccupied",
     guidance:
-      "Confirm how long the property has been vacant and why. Vacant property carries higher fire, malicious damage and water damage risk — apply the vacant property loading and consider a maximum vacancy period condition.",
+      "Confirm how long the property has been vacant and why. Vacant property carries higher fire, malicious damage and water damage risk — apply the vacant property loading, add the 'Unoccupied Property' endorsement, and consider a maximum vacancy period condition.",
     refersTo: "Underwriting Guide — Section 6, Occupancy Risk",
     severity: "caution",
   },
@@ -61,6 +61,13 @@ export const guidanceItems: GuidanceItem[] = [
     refersTo: "Resources — Broker List",
     refersToHref: "/resources#brokers",
     severity: "critical",
+  },
+  {
+    id: "renewal-pre-prepared-subjectivity",
+    trigger: "Processing a pre-prepared RN (Renewal) quote",
+    guidance:
+      "Always include this subjectivity: \"Subject to the insured's acceptance of the 3% increase in Sum Insured, and written confirmation that no material changes to the risk have occurred during the current period of insurance.\"",
+    severity: "caution",
   },
   {
     id: "renewal-material-change",
