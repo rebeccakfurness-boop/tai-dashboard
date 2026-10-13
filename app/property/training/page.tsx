@@ -19,6 +19,7 @@ export default function PropertyTrainingPage() {
         eyebrow="Property"
         title="Process & Training"
         description="The full quotation process, and step-by-step training modules by quote type. Click a box to open it."
+        search
       />
       <PageContainer>
         <section className="mb-12">

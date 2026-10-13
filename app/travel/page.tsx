@@ -11,6 +11,7 @@ export default function TravelPage() {
         eyebrow="Travel"
         title="Travel Quotation Toolkit"
         description="How the Travel inbox is organised and actioned, plus the reference links and lookups the team uses day to day."
+        search
       />
       <PageContainer>
         <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">

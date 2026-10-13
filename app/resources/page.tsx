@@ -33,6 +33,7 @@ export default function ResourcesPage() {
         eyebrow="Resources"
         title="Shared Resources"
         description="Naming conventions, inbox organisation, the broker list, and a guided checklist that ties everything together for new starters."
+        search
       />
       <PageContainer>
         <div className="space-y-14">

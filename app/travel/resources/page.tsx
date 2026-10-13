@@ -12,6 +12,7 @@ export default function TravelResourcesPage() {
         eyebrow="Travel"
         title="Resources"
         description="IHQ, SafeTravel, airline contacts and a business lookup."
+        search
       />
       <PageContainer>
         <section>

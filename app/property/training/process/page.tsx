@@ -24,6 +24,7 @@ export default function ProcessPage() {
         title="Property Product Quotation Process"
         description="The full step-by-step process, from first receipt to the Quote Register. Searchable inline: use ⌘K to jump straight to any step."
         actions={propertyProcessStatus === "draft" ? <DraftBadge /> : undefined}
+        search
       />
       <PageContainer>
         <section className="mb-10">

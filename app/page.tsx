@@ -3,6 +3,7 @@ import { ChevronRight, Sparkles } from "lucide-react";
 import { PageContainer } from "@/components/page-header";
 import { QuickLinkCard } from "@/components/quick-link-card";
 import { StaggerGrid, StaggerItem } from "@/components/stagger-grid";
+import { SearchBox } from "@/components/search-box";
 import { quickLinks } from "@/content/quickLinks";
 import { propertyGroup, travelGroup, resourcesNav, brokerRegistrationGroup } from "@/lib/nav";
 
@@ -47,11 +48,7 @@ export default function Home() {
             </h1>
             <p className="mt-4 text-[16px] leading-relaxed text-muted">
               Process guides, flood mapping for every region, reference tools and
-              troubleshooting guidance — all searchable from anywhere with{" "}
-              <kbd className="rounded border border-border-strong bg-surface px-1.5 py-0.5 text-[12px] font-semibold text-foreground">
-                ⌘K
-              </kbd>
-              . New here? Start with the{" "}
+              troubleshooting guidance, all in one place. New here? Start with the{" "}
               <Link
                 href="/resources#onboarding"
                 className="font-semibold text-brand-600 underline decoration-brand-300 underline-offset-2 hover:text-brand-700"
@@ -59,6 +56,16 @@ export default function Home() {
                 onboarding checklist
               </Link>
               .
+            </p>
+            <div className="mt-6 max-w-xl">
+              <SearchBox placeholder="Search every process, tool, and page…" />
+            </div>
+            <p className="mt-2.5 text-xs text-muted">
+              Or press{" "}
+              <kbd className="rounded border border-border-strong bg-surface px-1.5 py-0.5 text-[11px] font-semibold text-foreground">
+                ⌘K
+              </kbd>{" "}
+              to search from anywhere.
             </p>
           </div>
         </PageContainer>

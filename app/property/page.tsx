@@ -11,6 +11,7 @@ export default function PropertyPage() {
         eyebrow="Property"
         title="Property Quotation Toolkit"
         description="Everything the team needs to process a Property quote from first submission to issue — the process document, every regional flood mapping tool, reference lookups, and troubleshooting guidance."
+        search
       />
       <PageContainer>
         <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">

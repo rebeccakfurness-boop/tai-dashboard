@@ -256,3 +256,13 @@ export function search(query: string, limit = 8): SearchRecord[] {
     .slice(0, limit)
     .map((r) => r.item);
 }
+
+export function groupRecords(records: SearchRecord[]): [string, SearchRecord[]][] {
+  const groups = new Map<string, SearchRecord[]>();
+  for (const record of records) {
+    const list = groups.get(record.group) ?? [];
+    list.push(record);
+    groups.set(record.group, list);
+  }
+  return Array.from(groups.entries());
+}

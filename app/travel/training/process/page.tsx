@@ -24,6 +24,7 @@ export default function TravelProcessPage() {
         eyebrow="Travel > Process & Training"
         title="Process"
         description="Inbox category tags, who actions what, and the step-by-step Travel quotation process."
+        search
       />
       <PageContainer>
         <section className="mb-10">

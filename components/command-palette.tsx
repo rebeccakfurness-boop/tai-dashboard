@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { Command } from "cmdk";
 import { ArrowUpRight, CornerDownLeft, Search, X } from "lucide-react";
 import { useCommandPalette } from "./command-palette-context";
-import { search, searchIndex, type SearchRecord } from "@/lib/search";
+import { search, searchIndex, groupRecords, type SearchRecord } from "@/lib/search";
 import { cn } from "@/lib/utils";
 
 const DEFAULT_SUGGESTIONS = [
@@ -15,16 +15,6 @@ const DEFAULT_SUGGESTIONS = [
   "naming convention",
   "postcode finder",
 ];
-
-function groupRecords(records: SearchRecord[]) {
-  const groups = new Map<string, SearchRecord[]>();
-  for (const record of records) {
-    const list = groups.get(record.group) ?? [];
-    list.push(record);
-    groups.set(record.group, list);
-  }
-  return Array.from(groups.entries());
-}
 
 export function CommandPalette() {
   const { open, setOpen } = useCommandPalette();

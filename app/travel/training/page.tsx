@@ -14,6 +14,7 @@ export default function TravelTrainingPage() {
         eyebrow="Travel"
         title="Process & Training"
         description="Inbox tags, the quotation process, and step-by-step training modules. Pick a card below."
+        search
       />
       <PageContainer>
         <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">

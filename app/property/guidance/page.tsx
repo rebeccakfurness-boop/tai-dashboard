@@ -13,6 +13,7 @@ export default function GuidancePage() {
         title="Underwriting Guidance & Troubleshooting"
         description="“If this happens, look here.” Practical, threshold-based guidance for the scenarios that come up most — with a pointer to where to go next."
         actions={guidanceStatus === "draft" ? <DraftBadge /> : undefined}
+        search
       />
       <PageContainer>
         <GuidanceList items={guidanceItems} />

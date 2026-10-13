@@ -14,6 +14,7 @@ export default function QuoteTrainingPage() {
         eyebrow="Travel > Training"
         title="Quote"
         description="A step by step guide, from a request in the inbox to a quote on IHQ. No experience needed."
+        search
         actions={
           quoteModule?.pdfUrl && (
             <a

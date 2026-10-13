@@ -12,6 +12,7 @@ export default function ReferenceToolsPage() {
         eyebrow="Property"
         title="Property Reference Tools"
         description="Quick access to the lookups the team uses every day — postcodes, maps, and property information."
+        search
       />
       <PageContainer>
         <section>

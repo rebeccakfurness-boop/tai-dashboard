@@ -14,6 +14,7 @@ export default function ClosingsTrainingPage() {
         eyebrow="Travel > Training"
         title="Closings"
         description="A beginner's guide to checking, logging and filing closings. No experience needed."
+        search
         actions={
           closingsModule?.pdfUrl && (
             <a

@@ -14,6 +14,7 @@ export default function FloodMappingPage() {
         eyebrow="Property"
         title="Flood Mapping"
         description={`Select a region to view its flood mapping tool right here — ${regions.length} regions covered. Every tool can also be opened in a new tab if it won't embed.`}
+        search
       />
       <PageContainer>
         <FloodMappingExplorer regions={regions} />

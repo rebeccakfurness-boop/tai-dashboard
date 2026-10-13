@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import type { LucideIcon } from "lucide-react";
+import { SearchBox } from "./search-box";
 
 export function PageHeader({
   icon: Icon,
@@ -7,12 +8,16 @@ export function PageHeader({
   title,
   description,
   actions,
+  search,
+  searchPlaceholder,
 }: {
   icon?: LucideIcon;
   eyebrow?: string;
   title: string;
   description?: string;
   actions?: ReactNode;
+  search?: boolean;
+  searchPlaceholder?: string;
 }) {
   return (
     <div className="border-b border-border bg-surface">
@@ -42,6 +47,11 @@ export function PageHeader({
           </div>
           {actions && <div className="flex shrink-0 items-center gap-2">{actions}</div>}
         </div>
+        {search && (
+          <div className="mt-5 max-w-xl">
+            <SearchBox placeholder={searchPlaceholder} />
+          </div>
+        )}
       </div>
     </div>
   );

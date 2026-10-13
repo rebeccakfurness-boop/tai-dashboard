@@ -15,6 +15,7 @@ export default function PropertyClosingTrainingPage() {
         eyebrow="Property > Process & Training"
         title="Closing"
         description="What to do when a closing arrives from a broker, with a flow for each pathway."
+        search
         actions={
           closingModule?.pdfUrl && (
             <a
