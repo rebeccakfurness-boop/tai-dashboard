@@ -17,7 +17,7 @@ const baloo = Baloo_2({
 });
 
 export const metadata: Metadata = {
-  title: "Otta | TAI Underwriting Desk",
+  title: "Otta | Underwriting Desk",
   description:
     "The underwriting team's one-stop shop for Property and Travel quotation process, flood mapping, reference tools and guidance.",
 };

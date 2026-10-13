@@ -1,4 +1,4 @@
-# Otta | TAI Underwriting Dashboard
+# Otta | Underwriting Dashboard
 
 The underwriting team's single, searchable home for the Property and Travel
 quotation process — flood mapping for every NZ region, reference tools,

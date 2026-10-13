@@ -7,7 +7,7 @@ export function Logo({ className }: { className?: string }) {
         otta
       </span>
       <span className="mt-1 text-[10px] font-semibold uppercase tracking-wider text-muted">
-        TAI Underwriting Desk
+        Underwriting Desk
       </span>
     </div>
   );
