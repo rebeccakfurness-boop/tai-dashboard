@@ -53,7 +53,7 @@
     {
       "region": "Gisborne",
       "links": [
-        { "label": "Gisborne Significant Flood Plains", "url": "https://geoportal-gizzy.opendata.arcgis.com/maps/gizzy::gisborne-significant-flood-plains/about" }
+        { "label": "Gisborne Flood Hazard Areas", "url": "https://geoportal-gizzy.opendata.arcgis.com/datasets/flood-hazard-areas/explore" }
       ],
       "notes": ""
     },
