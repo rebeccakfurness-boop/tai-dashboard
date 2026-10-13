@@ -53,6 +53,7 @@ function buildIndex(): SearchRecord[] {
   }
 
   for (const propertyModule of [...propertyQuoteTypeModules, ...propertyExtraModules]) {
+    if (propertyModule.lessons) continue;
     records.push({
       id: `property-training-${propertyModule.id}`,
       title: propertyModule.label,
@@ -64,6 +65,20 @@ function buildIndex(): SearchRecord[] {
       href: "/property/training",
       group: "Property",
     });
+  }
+
+  for (const propertyModule of propertyQuoteTypeModules) {
+    if (propertyModule.status !== "available" || !propertyModule.href || !propertyModule.lessons) continue;
+    for (const lesson of propertyModule.lessons) {
+      records.push({
+        id: `property-training-${propertyModule.id}-${lesson.id}`,
+        title: lesson.title,
+        breadcrumb: `Property > Process & Training > ${propertyModule.label} > ${lesson.title}`,
+        description: lesson.summary,
+        href: `${propertyModule.href}#${lesson.id}`,
+        group: "Property",
+      });
+    }
   }
 
   const regions = (floodMappingData as { floodMappingRegions: FloodRegion[] })

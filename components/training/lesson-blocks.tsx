@@ -149,6 +149,40 @@ function LessonBlockView({ block }: { block: TrainingLessonBlock }) {
         </figure>
       );
 
+    case "table":
+      return (
+        <Card className="overflow-x-auto">
+          <table className="w-full min-w-[480px] text-left text-sm">
+            <thead>
+              <tr className="border-b border-border bg-border/30">
+                {block.headers.map((header) => (
+                  <th key={header} className="px-4 py-2.5 font-bold text-foreground">
+                    {header}
+                  </th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {block.rows.map((row, i) => (
+                <tr key={i} className="border-b border-border last:border-0">
+                  {row.map((cell, j) => (
+                    <td
+                      key={j}
+                      className={cn(
+                        "px-4 py-2.5 align-top",
+                        j === 0 ? "font-semibold text-foreground" : "text-muted",
+                      )}
+                    >
+                      {cell}
+                    </td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </Card>
+      );
+
     case "formula":
       return (
         <Card className="border-border-strong bg-foreground p-5 text-background">

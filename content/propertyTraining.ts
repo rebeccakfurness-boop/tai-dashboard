@@ -1,4 +1,5 @@
 import type { TrainingModule } from "./types";
+import { propertyClosingLessons } from "./propertyClosingLessons";
 
 export const propertyProcessModule: TrainingModule = {
   id: "process-overview",
@@ -41,8 +42,12 @@ export const propertyQuoteTypeModules: TrainingModule[] = [
   {
     id: "closing",
     label: "Closing",
+    tag: "Closing",
     description: "Checking a closing, then producing the schedule and COC.",
-    status: "coming-soon",
+    status: "available",
+    href: "/property/training/closing",
+    pdfUrl: "/training/processing-closings-property.pdf",
+    lessons: propertyClosingLessons,
   },
   {
     id: "referral-beazley",
