@@ -79,9 +79,7 @@ export default function Home() {
 
       <PageContainer>
         <section>
-          <h2 className="mb-4 text-sm font-semibold uppercase tracking-wide text-muted">
-            Jump back in
-          </h2>
+          <h2 className="mb-4 text-xl font-bold text-foreground">Jump back in</h2>
           <StaggerGrid className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {quickLinks.map((link) => (
               <StaggerItem key={link.label}>
@@ -92,29 +90,23 @@ export default function Home() {
         </section>
 
         <section className="mt-12">
-          <h2 className="mb-4 text-sm font-semibold uppercase tracking-wide text-muted">
-            Explore the dashboard
-          </h2>
+          <h2 className="mb-4 text-xl font-bold text-foreground">Explore the dashboard</h2>
           <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {sections.map((section) => {
               const Icon = section.icon;
               return (
                 <div
                   key={section.href}
-                  className="flex flex-col rounded-2xl border border-border bg-surface p-6 transition-all hover:-translate-y-0.5 hover:border-brand-300"
+                  className={cn(
+                    "flex flex-col rounded-2xl p-6 text-white transition-all hover:-translate-y-0.5",
+                    section.badgeClass,
+                  )}
                 >
-                  <span
-                    className={cn(
-                      "flex size-11 items-center justify-center rounded-xl text-white",
-                      section.badgeClass,
-                    )}
-                  >
+                  <span className="flex size-11 items-center justify-center rounded-full border border-white/40 text-white">
                     <Icon className="size-5" />
                   </span>
-                  <h3 className="mt-4 text-lg font-bold text-foreground">
-                    {section.label}
-                  </h3>
-                  <p className="mt-2 flex-1 text-sm leading-relaxed text-muted">
+                  <h3 className="mt-4 text-lg font-bold text-white">{section.label}</h3>
+                  <p className="mt-2 flex-1 text-sm leading-relaxed text-white/80">
                     {section.blurb}
                   </p>
 
@@ -124,9 +116,9 @@ export default function Home() {
                         <li key={item.href}>
                           <Link
                             href={item.href}
-                            className="focus-ring group flex items-center gap-1.5 rounded-md py-0.5 text-sm text-foreground/80 hover:text-brand-600"
+                            className="focus-ring group flex items-center gap-1.5 rounded-md py-0.5 text-sm text-white/85 hover:text-white"
                           >
-                            <ChevronRight className="size-3.5 text-muted transition-transform group-hover:translate-x-0.5 group-hover:text-brand-600" />
+                            <ChevronRight className="size-3.5 text-white/60 transition-transform group-hover:translate-x-0.5 group-hover:text-white" />
                             {item.label}
                           </Link>
                         </li>
@@ -136,10 +128,10 @@ export default function Home() {
 
                   <Link
                     href={section.href}
-                    className="focus-ring group mt-5 inline-flex items-center gap-1 text-sm font-semibold text-brand-600 hover:text-brand-700"
+                    className="focus-ring group mt-5 inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-[0.08em] text-white"
                   >
                     Open {section.label}
-                    <ChevronRight className="size-4 transition-transform group-hover:translate-x-0.5" />
+                    <ChevronRight className="size-3.5 transition-transform group-hover:translate-x-0.5" />
                   </Link>
                 </div>
               );

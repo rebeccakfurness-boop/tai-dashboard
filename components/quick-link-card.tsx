@@ -1,23 +1,26 @@
 import Link from "next/link";
-import { ArrowUpRight, ChevronRight } from "lucide-react";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
 import type { QuickLink } from "@/content/quickLinks";
 
 export function QuickLinkCard({ link }: { link: QuickLink }) {
   const Icon = link.icon;
   const content = (
     <>
-      <span className="flex size-11 items-center justify-center rounded-xl bg-brand-100 text-brand-600 transition-colors group-hover:bg-brand-500 group-hover:text-white">
-        <Icon className="size-5" />
-      </span>
-      <div className="mt-4 flex items-center gap-1.5">
-        <h3 className="font-semibold text-foreground">{link.label}</h3>
-        {link.external ? (
-          <ArrowUpRight className="size-3.5 text-muted transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-brand-600" />
-        ) : (
-          <ChevronRight className="size-3.5 text-muted transition-transform group-hover:translate-x-0.5 group-hover:text-brand-600" />
-        )}
+      <div className="flex items-start justify-between gap-3">
+        <h3 className="text-base font-bold text-foreground">{link.label}</h3>
+        <span className="flex size-9 shrink-0 items-center justify-center rounded-full border border-brand-300 text-brand-600 transition-colors group-hover:border-brand-500 group-hover:bg-brand-500 group-hover:text-white">
+          <Icon className="size-4" />
+        </span>
       </div>
-      <p className="mt-1 text-sm text-muted">{link.description}</p>
+      <p className="mt-2 text-sm leading-relaxed text-muted">{link.description}</p>
+      <span className="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-[0.08em] text-brand-600 group-hover:text-brand-700">
+        View
+        {link.external ? (
+          <ArrowUpRight className="size-3.5 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+        ) : (
+          <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-0.5" />
+        )}
+      </span>
     </>
   );
 
