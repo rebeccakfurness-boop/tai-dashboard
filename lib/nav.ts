@@ -10,6 +10,7 @@ import {
   UserPlus,
   History,
   GraduationCap,
+  Monitor,
 } from "lucide-react";
 
 export type NavItem = {
@@ -85,6 +86,13 @@ export const travelGroup: NavGroup = {
   ],
 };
 
+export const techSystemNav: NavItem = {
+  label: "Tech System",
+  href: "/tech-system",
+  icon: Monitor,
+  description: "Step-by-step training for the Otta website, admin portal and broker portal.",
+};
+
 export const resourcesNav: NavItem = {
   label: "Resources",
   href: "/resources",
@@ -116,6 +124,7 @@ export const allNavItems: NavItem[] = [
   overviewNav,
   ...propertyGroup.items,
   ...travelGroup.items,
+  techSystemNav,
   resourcesNav,
   ...brokerRegistrationGroup.items,
 ];

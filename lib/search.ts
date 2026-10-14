@@ -8,6 +8,7 @@ import { travelLinks, travelProcessSteps } from "@/content/travelProcess";
 import { categoryTags, actorTags } from "@/content/travelInboxTags";
 import { trainingModules } from "@/content/travelTraining";
 import { propertyQuoteTypeModules, propertyExtraModules } from "@/content/propertyTraining";
+import { techTrainingModules } from "@/content/techTraining";
 import type { FloodRegion } from "@/content/types";
 
 export type SearchRecord = {
@@ -186,6 +187,20 @@ function buildIndex(): SearchRecord[] {
         description: lesson.summary,
         href: `${trainingModule.href}#${lesson.id}`,
         group: "Travel",
+      });
+    }
+  }
+
+  for (const techModule of techTrainingModules) {
+    if (techModule.status !== "available" || !techModule.href || !techModule.lessons) continue;
+    for (const lesson of techModule.lessons) {
+      records.push({
+        id: `tech-training-${techModule.id}-${lesson.id}`,
+        title: lesson.title,
+        breadcrumb: `Tech System > ${techModule.label} > ${lesson.title}`,
+        description: lesson.summary,
+        href: `${techModule.href}#${lesson.id}`,
+        group: "Tech System",
       });
     }
   }

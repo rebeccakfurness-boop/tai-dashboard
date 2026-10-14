@@ -10,6 +10,7 @@ import {
   overviewNav,
   propertyGroup,
   travelGroup,
+  techSystemNav,
   resourcesNav,
   brokerRegistrationGroup,
 } from "@/lib/nav";
@@ -132,6 +133,15 @@ export function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
               />
             ))}
           </div>
+        </div>
+
+        <div className="pt-3">
+          <NavLink
+            href={techSystemNav.href}
+            label={techSystemNav.label}
+            icon={techSystemNav.icon}
+            active={pathname === techSystemNav.href || pathname.startsWith("/tech-system/")}
+          />
         </div>
 
         <div className="pt-3">

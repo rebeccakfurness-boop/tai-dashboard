@@ -5,7 +5,14 @@ import { QuickLinkCard } from "@/components/quick-link-card";
 import { StaggerGrid, StaggerItem } from "@/components/stagger-grid";
 import { SearchBox } from "@/components/search-box";
 import { quickLinks } from "@/content/quickLinks";
-import { propertyGroup, travelGroup, resourcesNav, brokerRegistrationGroup } from "@/lib/nav";
+import { techTrainingModules } from "@/content/techTraining";
+import {
+  propertyGroup,
+  travelGroup,
+  techSystemNav,
+  resourcesNav,
+  brokerRegistrationGroup,
+} from "@/lib/nav";
 import { cn } from "@/lib/utils";
 
 const sections = [
@@ -19,6 +26,18 @@ const sections = [
     ...travelGroup,
     blurb:
       "Inbox category tags, who actions what, and the reference links the team uses day to day.",
+    badgeClass: "bg-brand-500",
+  },
+  {
+    label: techSystemNav.label,
+    href: techSystemNav.href,
+    icon: techSystemNav.icon,
+    blurb:
+      "Step-by-step training for the Otta website, the admin portal and the broker portal.",
+    items: techTrainingModules.map((module) => ({
+      href: module.href!,
+      label: module.label,
+    })),
     badgeClass: "bg-brand-500",
   },
   {
