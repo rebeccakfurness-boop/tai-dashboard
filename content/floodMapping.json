@@ -88,8 +88,10 @@
     },
     {
       "region": "Palmerston North",
-      "links": [],
-      "notes": "Unavailable — no online flood mapping tool currently published."
+      "links": [
+        { "label": "Palmerston North Flood Plain Mapping", "url": "https://experience.arcgis.com/experience/3f7b4ec2f6f14503af1146ce412de39e/page/Flood-Plain-Mapping" }
+      ],
+      "notes": ""
     },
     {
       "region": "Hutt City",
